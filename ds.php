@@ -265,7 +265,7 @@ $resSubjs = pg_fetch_all($result);
 foreach ($resSubjs as $subject) {
 	$tmp = findTime ('thu', pg_array_parse($subject['time'])); //finding number of subject in the day
 	foreach ($tmp as $value) {
-		$tuesday[$value] = $subject['subject'];
+		$thursday[$value] = $subject['subject'];
 	}
 }
 $query = "select * from subjectok where 'fri' = any (days)";
