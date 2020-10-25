@@ -13,61 +13,54 @@
     
  		<p>Дни недели:</p>
   			<p><input type="checkbox" name="Mon" value="1">Понедельник  
-  			Пара:<select size="1" name="selectMon">
-  				<option disabled selected>№</option>
-  				<option value="1">1</option>
-  				<option value="2">2</option>
-  				<option value="3">3</option>
-  				<option value="4">4</option>
-  				<option value="5">5</option>
-  			</select><Br>
-  			<input type="checkbox" name="Tue" value="1">Втонрник  
-  			Пара:<select size="1" name="selectTue">
-  				<option disabled selected>№</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select><Br>
-  			<input type="checkbox" name="Wed" value="1">Среда  
-  			Пара:<select size="1" name="selectWed">
-  				<option disabled selected>№</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-  			</select><Br>
-  			<input type="checkbox" name="Thu" value="1">Четверг  
-  			Пара:<select size="1" name="selectThu">
-  				<option disabled selected>№</option>
-  				<option disabled selected>№</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-  			</select><Br>
-  			<input type="checkbox" name="Fri" value="1">Пятница  
-  			Пара:<select size="1" name="selectFri">
-  				<option disabled selected>№</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-  			</select><Br>
-  			<input type="checkbox" name="Sat" value="1">Суббота  
-  			Пара:<select size="1" name="selectSat">
-  				<option disabled selected>№</option>
-  			  <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+  			Пара:
+        <input type="checkbox" name="monTime[]" value="1">
+        <input type="checkbox" name="monTime[]" value="2">
+        <input type="checkbox" name="monTime[]" value="3">
+        <input type="checkbox" name="monTime[]" value="4">
+        <input type="checkbox" name="monTime[]" value="5">
 
-  			</select><Br></p>
+        <Br>
+  			<input type="checkbox" name="Tue" value="1">Вторник  
+  			Пара:
+        <input type="checkbox" name="tueTime[]" value="1">
+        <input type="checkbox" name="tueTime[]" value="2">
+        <input type="checkbox" name="tueTime[]" value="3">
+        <input type="checkbox" name="tueTime[]" value="4">
+        <input type="checkbox" name="tueTime[]" value="5">
+        <Br>
+  			<input type="checkbox" name="Wed" value="1">Среда  
+  			Пара:
+        <input type="checkbox" name="wedTime[]" value="1">
+        <input type="checkbox" name="wedTime[]" value="2">
+        <input type="checkbox" name="wedTime[]" value="3">
+        <input type="checkbox" name="wedTime[]" value="4">
+        <input type="checkbox" name="wedTime[]" value="5">
+        <Br>
+  			<input type="checkbox" name="Thu" value="1">Четверг  
+  			Пара:
+        <input type="checkbox" name="thuTime[]" value="1">
+        <input type="checkbox" name="thuTime[]" value="2">
+        <input type="checkbox" name="thuTime[]" value="3">
+        <input type="checkbox" name="thuTime[]" value="4">
+        <input type="checkbox" name="thuTime[]" value="5">
+        <Br>
+  			<input type="checkbox" name="Fri" value="1">Пятница  
+  			Пара:
+        <input type="checkbox" name="friTime[]" value="1">
+        <input type="checkbox" name="friTime[]" value="2">
+        <input type="checkbox" name="friTime[]" value="3">
+        <input type="checkbox" name="friTime[]" value="4">
+        <input type="checkbox" name="friTime[]" value="5">
+        <Br>
+  			<input type="checkbox" name="Sat" value="1">Суббота  
+  			Пара:
+        <input type="checkbox" name="satTime[]" value="1">
+        <input type="checkbox" name="satTime[]" value="2">
+        <input type="checkbox" name="satTime[]" value="3">
+        <input type="checkbox" name="satTime[]" value="4">
+        <input type="checkbox" name="satTime[]" value="5">
+        <Br></p>
         <p><input type="submit" name="reboot" value="обновить"></p>
   			<p><input type="submit" name="save" value="Добавить"></p>
   			<p><input type="submit" name="del"  value="Удалить"></p>
@@ -363,26 +356,100 @@ foreach ($resSubjs as $subject) {
 
 
   if (isset($_POST['save'])){
+    $query = "delete from subjectok where subject = '$_POST[subj]'";
+    $result = pg_query($db,$query);
     $time = "{";
     $days= "{";
     if ($_POST['Mon'] == 1) {
+      $time = $time. "{mon,";
       $days = $days. "mon,";
-      $time = $time . "{mon, ".$_POST['selectMon']. "},";}
+      $AOI = $_POST['monTime'];
+      $n = sizeof($AOI);
+      for ($i=0; $i < $n; $i++) { 
+          if ($monday[$AOI[$i]] == "")
+            $time = $time . $AOI[$i].",";
+          else $time = $time."0,";
+      }
+      for ($i=$n; $i<6; $i++){
+        $time = $time."0,";
+      }
+      $time = substr($time,0,-1). "},";
+    }
     if ($_POST['Tue'] == 1) {
       $days = $days. "tue,";
-      $time = $time . "{tue, ".$_POST['selectTue']. "},";}
+      $time = $time . "{tue,";
+      $AOI = $_POST['tueTime'];
+      $n = sizeof($AOI);
+      for ($i=0; $i < $n; $i++) { 
+        if ($tuesday[$AOI[$i]] == "")
+          $time = $time . $AOI[$i].",";
+        else $time = $time."0,"; 
+      }
+      for ($i=$n; $i<6; $i++){
+        $time = $time."0,";
+      }
+      $time = substr($time,0,-1). "},";
+    }
     if ($_POST['Wed'] == 1) {
       $days = $days. "wed,";
-      $time = $time . "{wed, ".$_POST['selectWed']. "},";}
+      $time = $time . "{wed,";
+      $AOI = $_POST['wedTime'];
+      $n = sizeof($AOI);
+      for ($i=0; $i < $n; $i++) { 
+        if ($wednesday[$AOI[$i]] == "")
+          $time = $time . $AOI[$i].",";
+        else $time = $time."0,";
+      }
+      for ($i=$n; $i<6; $i++){
+        $time = $time."0,";
+      }
+      $time = substr($time,0,-1). "},";
+    }
     if ($_POST['Thu'] == 1) {
       $days = $days. "thu,";
-      $time = $time . "{thu, ".$_POST['selectThu']. "},";}
+      $time = $time . "{thu,";
+      $AOI = $_POST['thuTime'];
+      $n = sizeof($AOI);
+      for ($i=0; $i < $n; $i++) { 
+        if ($thusday[$AOI[$i]] == "")
+          $time = $time . $AOI[$i].",";
+        else $time = $time."0,";
+      }
+      for ($i=$n; $i<6; $i++){
+        $time = $time."0,";
+      }
+      $time = substr($time,0,-1). "},";
+    }
     if ($_POST['Fri'] == 1) {
       $days = $days. "fri,";
-      $time = $time . "{fri, ".$_POST['selectFri']. "},";}
+      $time = $time . "{fri,";
+      $AOI = $_POST['friTime'];
+      $n = sizeof($AOI);
+      for ($i=0; $i < $n; $i++) { 
+        if ($friday[$AOI[$i]] == "")
+          $time = $time . $AOI[$i].",";
+        else $time = $time."0,";
+      }
+       for ($i=$n; $i<6; $i++){
+        $time = $time."0,";
+      }
+      $time = substr($time,0,-1). "},";
+    }
     if ($_POST['Sat'] == 1) {
       $days = $days. "sat,";
-      $time = $time . "{sat, ".$_POST['selectSat']. "},";}
+      $time = $time . "{sat,";
+      $AOI = $_POST['satTime'];
+      $n = sizeof($AOI);
+      for ($i=0; $i < $n; $i++) { 
+        if ($saturday[$AOI[$i]] == "")
+          $time = $time . $AOI[$i].",";
+        else $time = $time."0,";
+      }
+       for ($i=$n; $i<6; $i++){
+        $time = $time."0,";
+      }
+      $time = substr($time,0,-1). "},";
+    }
     $days = substr($days,0,-1)."}";
     $time = substr($time,0,-1)."}";
     $query = "INSERT INTO subjectok values ('$_POST[subj]','$sched','', '$days', '$time')";
