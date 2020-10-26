@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Создание</title>
+</head>
+<body>
+ <h1 align="CENTER">Расписание</h1>
+ 	<form name="add" method="POST" action="">
+ 		<h2>Добавить предмет</h2><br>
+ 		<p>Название:</p><br>
+ 		<input type="text" name="name" size="40"><br>
+ 		<p>Дни недели:</p>
+  			<p><input type="checkbox" name="с1" value="a1">Понедельник  
+  			Пара:<select size="1">
+  				<option disabled selected>№</option>
+  				<option value="pp1">1</option>
+  				<option value="pp2">2</option>
+  				<option value="pp3">3</option>
+  				<option value="pp4">4</option>
+  				<option value="pp5">5</option>
+  			</select><Br>
+  			<input type="checkbox" name="с2" value="a2">Втонрник  
+  			Пара:<select size="1">
+  				<option disabled selected>№</option>
+  				<option value="vp1">1</option>
+  				<option value="vp2">2</option>
+  				<option value="vp3">3</option>
+  				<option value="vp4">4</option>
+  				<option value="vp5">5</option>
+  			</select><Br>
+  			<input type="checkbox" name="с3" value="a3">Среда  
+  			Пара:<select size="1">
+  				<option disabled selected>№</option>
+  				<option value="srp1">1</option>
+  				<option value="srp2">2</option>
+  				<option value="srp3">3</option>
+  				<option value="srp4">4</option>
+  				<option value="srp5">5</option>
+  			</select><Br>
+  			<input type="checkbox" name="с4" value="a4">Четверг  
+  			Пара:<select size="1">
+  				<option disabled selected>№</option>
+  				<option value="cp1">1</option>
+  				<option value="cp2">2</option>
+  				<option value="cp3">3</option>
+  				<option value="cp4">4</option>
+  				<option value="cp5">5</option>
+  			</select><Br>
+  			<input type="checkbox" name="с5" value="a5">Пятница  
+  			Пара:<select size="1">
+  				<option disabled selected>№</option>
+  				<option value="ptp1">1</option>
+  				<option value="ptp2">2</option>
+  				<option value="ptp3">3</option>
+  				<option value="ptp4">4</option>
+  				<option value="ptp5">5</option>
+  			</select><Br>
+  			<input type="checkbox" name="с6" value="a6">Суббота  
+  			Пара:<select size="1">
+  				<option disabled selected>№</option>
+  				<option value="sup1">1</option>
+  				<option value="sup2">2</option>
+  				<option value="sup3">3</option>
+  				<option value="sup4">4</option>
+  				<option value="sup5">5</option>
+  			</select><Br></p>
+  			<p><input type="submit" value="Добавить"></p>
+  			<p><input type="button" name="del" value="Удалить"></p>
+  	</form>
+ <p align="CENTER">
+<table border="0" cellspacing="30" align="CENTER"><tr><td>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Понедельник</h5>
+      <p class="card-text">
+      	<table border="1" name="pn">
+		<tr>
+		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
+		</tr>
+		<td>1</td> <td></td> <td></td>
+		</tr>
+		<td>2</td> <td></td> <td></td>
+		</tr>
+		<td>3</td> <td></td> <td></td>
+		</tr>
+		<td>4</td> <td></td> <td></td>
+		</tr>
+		<td>5</td> <td></td> <td></td>
+		</tr>
+		</table>
+	</p>
+    </div>
+  </div>
+ </td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Вторник</h5>
+      <p class="card-text">
+      	<table border="1" name="vt">
+		<tr>
+		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
+		</tr>
+		<td>1</td> <td></td> <td></td>
+		</tr>
+		<td>2</td> <td></td> <td></td>
+		</tr>
+		<td>3</td> <td></td> <td></td>
+		</tr>
+		<td>4</td> <td></td> <td></td>
+		</tr>
+		<td>5</td> <td></td> <td></td>
+		</tr>
+		</table>
+	</p>
+    </div>
+  </div>
+</td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Среда</h5>
+      <p class="card-text">
+      	<table border="1" name="sr">
+		<tr>
+		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
+		</tr>
+		<td>1</td> <td></td> <td></td>
+		</tr>
+		<td>2</td> <td></td> <td></td>
+		</tr>
+		<td>3</td> <td></td> <td></td>
+		</tr>
+		<td>4</td> <td></td> <td></td>
+		</tr>
+		<td>5</td> <td></td> <td></td>
+		</tr>
+		</table>
+	</p>
+    </div>
+  </div>
+</div>
+</td>
+</tr>
+<tr>
+	<td>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Четверг</h5>
+      <p class="card-text">
+      	<table border="1" name="ch">
+		<tr>
+		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
+		</tr>
+		<td>1</td> <td></td> <td></td>
+		</tr>
+		<td>2</td> <td></td> <td></td>
+		</tr>
+		<td>3</td> <td></td> <td></td>
+		</tr>
+		<td>4</td> <td></td> <td></td>
+		</tr>
+		<td>5</td> <td></td> <td></td>
+		</tr>
+		</table>
+	</p>
+    </div>
+  </div>
+ </td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Пятница</h5>
+      <p class="card-text">
+      	<table border="1" name="pt">
+		<tr>
+		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
+		</tr>
+		<td>1</td> <td></td> <td></td>
+		</tr>
+		<td>2</td> <td></td> <td></td>
+		</tr>
+		<td>3</td> <td></td> <td></td>
+		</tr>
+		<td>4</td> <td></td> <td></td>
+		</tr>
+		<td>5</td> <td></td> <td></td>
+		</tr>
+		</table>
+	</p>
+    </div>
+  </div>
+</td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Суббота</h5>
+      <p class="card-text">
+      	<table border="1" name="sub">
+		<tr>
+		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
+		</tr>
+		<td>1</td> <td></td> <td></td>
+		</tr>
+		<td>2</td> <td></td> <td></td>
+		</tr>
+		<td>3</td> <td></td> <td></td>
+		</tr>
+		<td>4</td> <td></td> <td></td>
+		</tr>
+		<td>5</td> <td></td> <td></td>
+		</tr>
+		</table>
+	</p>
+    </div>
+  </div>
+</div>
+</td>
+</tr>
+</table>
+<a href="ds.html">Главная</a>
+</body>
+</html>

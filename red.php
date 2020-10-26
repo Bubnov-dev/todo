@@ -3,10 +3,30 @@
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Создание</title>
+  <link rel="stylesheet" type="text/css" href="table.css">
+  <style>
+    body {
+      font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #292b2c;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    }
+
+    #mainForm{
+      margin-left: 1%;
+      float: left;
+    }
+  </style>
+
 </head>
 <body>
- <h1 align="CENTER">Расписание</h1>
- 	<form name="add" method="POST" action="">
+ 
+ 	<form id="mainForm" name="add" method="POST" action="">
  		<h2>Добавить предмет</h2><br>
  		<p>Название:</p><br>
  		<input type="text" name="subj" size="40"><br>
@@ -214,7 +234,7 @@
 </td>
 </tr>
 </table>
-<a href="ds.php">смотреть</a>
+<a href="show.php">смотреть</a>
   
   <?php
 
