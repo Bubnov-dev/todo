@@ -16,11 +16,52 @@
       padding: 0;
       background: linear-gradient(45deg, #EECFBA, #C5DDE8);
     }
-
+    .dayName{
+      display: inline-block;
+      width: 45%;
+    }
     #mainForm{
       margin-left: 1%;
       float: left;
     }
+
+
+
+    input[type="submit"] {
+  display: inline-block;
+  width: 6em;
+  height: 2em;
+  line-height: 2em;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  color: rgb(0,0,0);
+  outline: none;
+  border: 1px solid rgba(0,0,0,.4);
+  border-top-color: rgba(0,0,0,.3);
+  border-radius: 2px;
+  background: linear-gradient(45deg, #c58b77, #a29995);
+  box-shadow:
+   0 0 3px rgba(0,0,0,0) inset,
+   0 1px 1px 1px rgba(255,255,255,.2),
+   0 -1px 1px 1px rgba(0,0,0,0);
+  transition: .2s ease-in-out;
+}
+input[type="submit"]hover:not(:active) {
+
+  box-shadow:
+   0 0 3px rgba(0,0,0,0) inset,
+   0 1px 1px 1px rgba(0,255,255,.5),
+   0 -1px 1px 1px rgba(0,255,255,.5);
+}
+input[type="submit"]:active {
+  background: linear-gradient(#856, #635);
+  box-shadow:
+   0 0 3px rgba(0,0,0,.5) inset,
+   0 1px 1px 1px rgba(255,255,255,.4),
+   0 -1px 1px 1px rgba(0,0,0,.1);
+}
   </style>
 
 </head>
@@ -32,8 +73,7 @@
  		<input type="text" name="subj" size="40"><br>
     
  		<p>Дни недели:</p>
-  			<p><input type="checkbox" name="Mon" value="1">Понедельник  
-  			Пара:
+  			<p><span class="dayName"><input type="checkbox" name="Mon" value="1">Понедельник  </span>
         <input type="checkbox" name="monTime[]" value="1">
         <input type="checkbox" name="monTime[]" value="2">
         <input type="checkbox" name="monTime[]" value="3">
@@ -41,40 +81,35 @@
         <input type="checkbox" name="monTime[]" value="5">
 
         <Br>
-  			<input type="checkbox" name="Tue" value="1">Вторник  
-  			Пара:
+  			<span class="dayName"><input type="checkbox" name="Tue" value="1">Вторник  </span>
         <input type="checkbox" name="tueTime[]" value="1">
         <input type="checkbox" name="tueTime[]" value="2">
         <input type="checkbox" name="tueTime[]" value="3">
         <input type="checkbox" name="tueTime[]" value="4">
         <input type="checkbox" name="tueTime[]" value="5">
         <Br>
-  			<input type="checkbox" name="Wed" value="1">Среда  
-  			Пара:
+  			<span class="dayName"><input type="checkbox" name="Wed" value="1">Среда  </span>
         <input type="checkbox" name="wedTime[]" value="1">
         <input type="checkbox" name="wedTime[]" value="2">
         <input type="checkbox" name="wedTime[]" value="3">
         <input type="checkbox" name="wedTime[]" value="4">
         <input type="checkbox" name="wedTime[]" value="5">
         <Br>
-  			<input type="checkbox" name="Thu" value="1">Четверг  
-  			Пара:
+  			<span class="dayName"><input type="checkbox" name="Thu" value="1">Четверг  </span>
         <input type="checkbox" name="thuTime[]" value="1">
         <input type="checkbox" name="thuTime[]" value="2">
         <input type="checkbox" name="thuTime[]" value="3">
         <input type="checkbox" name="thuTime[]" value="4">
         <input type="checkbox" name="thuTime[]" value="5">
         <Br>
-  			<input type="checkbox" name="Fri" value="1">Пятница  
-  			Пара:
+  			<span class="dayName"><input type="checkbox" name="Fri" value="1">Пятница  </span>
         <input type="checkbox" name="friTime[]" value="1">
         <input type="checkbox" name="friTime[]" value="2">
         <input type="checkbox" name="friTime[]" value="3">
         <input type="checkbox" name="friTime[]" value="4">
         <input type="checkbox" name="friTime[]" value="5">
         <Br>
-  			<input type="checkbox" name="Sat" value="1">Суббота  
-  			Пара:
+  			<span class="dayName"><input type="checkbox" name="Sat" value="1">Суббота  </span>
         <input type="checkbox" name="satTime[]" value="1">
         <input type="checkbox" name="satTime[]" value="2">
         <input type="checkbox" name="satTime[]" value="3">
