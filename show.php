@@ -509,6 +509,10 @@ foreach ($resSubjs as $subject) {
       unset($_POST['saveInfo']);
     }
 
+    if(isset($_POST['delInfo'])){
+      $query = "delete from task where subject = ".$_POST['modal'];
+      $result = pg_query($db, $query);
+    }
 
   ?>
 
