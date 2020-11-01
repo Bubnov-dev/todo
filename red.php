@@ -5,16 +5,9 @@
   <title>Создание</title>
   <link rel="stylesheet" type="text/css" href="table.css">
   <style>
-    body {
-      font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.5;
-      color: #292b2c;
-      background-color: #fff;
-      margin: 0;
-      padding: 0;
+    html{
       background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+      height: 100%;
     }
     .dayName{
       display: inline-block;
@@ -28,40 +21,40 @@
 
 
     input[type="submit"] {
-  display: inline-block;
-  width: 6em;
-  height: 2em;
-  line-height: 2em;
-  vertical-align: middle;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  color: rgb(0,0,0);
-  outline: none;
-  border: 1px solid rgba(0,0,0,.4);
-  border-top-color: rgba(0,0,0,.3);
-  border-radius: 2px;
-  background: linear-gradient(45deg, #c58b77, #a29995);
-  box-shadow:
-   0 0 3px rgba(0,0,0,0) inset,
-   0 1px 1px 1px rgba(255,255,255,.2),
-   0 -1px 1px 1px rgba(0,0,0,0);
-  transition: .2s ease-in-out;
-}
-input[type="submit"]hover:not(:active) {
+      display: inline-block;
+      width: 6em;
+      height: 2em;
+      line-height: 2em;
+      vertical-align: middle;
+      text-align: center;
+      text-decoration: none;
+      user-select: none;
+      color: rgb(0,0,0);
+      outline: none;
+      border: 1px solid rgba(0,0,0,.4);
+      border-top-color: rgba(0,0,0,.3);
+      border-radius: 2px;
+      background: linear-gradient(45deg, #c58b77, #a29995);
+      box-shadow:
+       0 0 3px rgba(0,0,0,0) inset,
+       0 1px 1px 1px rgba(255,255,255,.2),
+       0 -1px 1px 1px rgba(0,0,0,0);
+      transition: .2s ease-in-out;
+    }
+    input[type="submit"]hover:not(:active) {
 
-  box-shadow:
-   0 0 3px rgba(0,0,0,0) inset,
-   0 1px 1px 1px rgba(0,255,255,.5),
-   0 -1px 1px 1px rgba(0,255,255,.5);
-}
-input[type="submit"]:active {
-  background: linear-gradient(#856, #635);
-  box-shadow:
-   0 0 3px rgba(0,0,0,.5) inset,
-   0 1px 1px 1px rgba(255,255,255,.4),
-   0 -1px 1px 1px rgba(0,0,0,.1);
-}
+      box-shadow:
+       0 0 3px rgba(0,0,0,0) inset,
+       0 1px 1px 1px rgba(0,255,255,.5),
+       0 -1px 1px 1px rgba(0,255,255,.5);
+    }
+    input[type="submit"]:active {
+      background: linear-gradient(#856, #635);
+      box-shadow:
+       0 0 3px rgba(0,0,0,.5) inset,
+       0 1px 1px 1px rgba(255,255,255,.4),
+       0 -1px 1px 1px rgba(0,0,0,.1);
+    }
   </style>
 
 </head>
@@ -72,8 +65,9 @@ input[type="submit"]:active {
  		<p>Название:</p><br>
  		<input type="text" name="subj" size="40"><br>
     
- 		<p>Дни недели:</p>
-  			<p><span class="dayName"><input type="checkbox" name="Mon" value="1">Понедельник  </span>
+ 		<span class="dayName">Дни недели:</span> 
+    <span>номера пар</span>
+  			<p><span class="dayName">Понедельник  </span>
         <input type="checkbox" name="monTime[]" value="1">
         <input type="checkbox" name="monTime[]" value="2">
         <input type="checkbox" name="monTime[]" value="3">
@@ -81,43 +75,42 @@ input[type="submit"]:active {
         <input type="checkbox" name="monTime[]" value="5">
 
         <Br>
-  			<span class="dayName"><input type="checkbox" name="Tue" value="1">Вторник  </span>
+  			<span class="dayName">Вторник  </span>
         <input type="checkbox" name="tueTime[]" value="1">
         <input type="checkbox" name="tueTime[]" value="2">
         <input type="checkbox" name="tueTime[]" value="3">
         <input type="checkbox" name="tueTime[]" value="4">
         <input type="checkbox" name="tueTime[]" value="5">
         <Br>
-  			<span class="dayName"><input type="checkbox" name="Wed" value="1">Среда  </span>
+  			<span class="dayName">Среда  </span>
         <input type="checkbox" name="wedTime[]" value="1">
         <input type="checkbox" name="wedTime[]" value="2">
         <input type="checkbox" name="wedTime[]" value="3">
         <input type="checkbox" name="wedTime[]" value="4">
         <input type="checkbox" name="wedTime[]" value="5">
         <Br>
-  			<span class="dayName"><input type="checkbox" name="Thu" value="1">Четверг  </span>
+  			<span class="dayName">Четверг  </span>
         <input type="checkbox" name="thuTime[]" value="1">
         <input type="checkbox" name="thuTime[]" value="2">
         <input type="checkbox" name="thuTime[]" value="3">
         <input type="checkbox" name="thuTime[]" value="4">
         <input type="checkbox" name="thuTime[]" value="5">
         <Br>
-  			<span class="dayName"><input type="checkbox" name="Fri" value="1">Пятница  </span>
+  			<span class="dayName">Пятница  </span>
         <input type="checkbox" name="friTime[]" value="1">
         <input type="checkbox" name="friTime[]" value="2">
         <input type="checkbox" name="friTime[]" value="3">
         <input type="checkbox" name="friTime[]" value="4">
         <input type="checkbox" name="friTime[]" value="5">
         <Br>
-  			<span class="dayName"><input type="checkbox" name="Sat" value="1">Суббота  </span>
+  			<span class="dayName">Суббота  </span>
         <input type="checkbox" name="satTime[]" value="1">
         <input type="checkbox" name="satTime[]" value="2">
         <input type="checkbox" name="satTime[]" value="3">
         <input type="checkbox" name="satTime[]" value="4">
         <input type="checkbox" name="satTime[]" value="5">
         <Br></p>
-        <p><input type="submit" name="reboot" value="обновить"></p>
-  			<p><input type="submit" name="save" value="Добавить"></p>
+  			<p><input type="submit" name="save" value="Добавить/обновить"></p>
   			<p><input type="submit" name="del"  value="Удалить"></p>
   	</form>
  <h1 align="CENTER">Расписание</h1>
@@ -271,8 +264,10 @@ input[type="submit"]:active {
 </table>
 <a href="show.php">смотреть</a>
   
-  <?php
-
+<?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 
 function pg_array_parse($s, $start = 0, &$end = null)
 {
@@ -284,7 +279,6 @@ function pg_array_parse($s, $start = 0, &$end = null)
     $v = '';
     for ($i = $start + 1; $i < $len; $i++) {
         $ch = $s[$i];
-
         if (!$string && $ch == '}') {
             if ($v !== '' || !empty($return)) {
                 $return[] = $v;
@@ -335,93 +329,114 @@ $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpas
 
 $sched = "itmo";
 
+  $monday    = ["","","","","",""];
+  $tuesday   = ["","","","","",""];
+  $wednesday = ["","","","","",""];
+  $thursday  = ["","","","","",""];
+  $friday    = ["","","","","",""];
+  $saturday  = ["","","","","",""];
 
-$monday    = ["","","","","",""];
-$tuesday   = ["","","","","",""];
-$wednesday = ["","","","","",""];
-$thursday  = ["","","","","",""];
-$friday    = ["","","","","",""];
-$saturday  = ["","","","","",""];
 
-$query = "select * from subjectok where 'mon' = any (days)";
-$result = pg_query($db,$query);
-$resSubjs = pg_fetch_all($result);
-foreach ($resSubjs as $subject) {
-  $tmp = findTime ('mon', pg_array_parse($subject['time'])); //finding number of subject in the day
-  foreach ($tmp as $value) {
-    $monday[$value] = $subject['subject'];
-  }
-}
+getSubjs();
 
-$query = "select * from subjectok where 'tue' = any (days)";
-$result = pg_query($db,$query);
-$resSubjs = pg_fetch_all($result);
-foreach ($resSubjs as $subject) {
-  $tmp = findTime ('tue', pg_array_parse($subject['time'])); //finding number of subject in the day
-  foreach ($tmp as $value) {
-    $tuesday[$value] = $subject['subject'];
-  }
-}
-$query = "select * from subjectok where 'wed' = any (days)";
-$result = pg_query($db,$query);
-$resSubjs = pg_fetch_all($result);
-foreach ($resSubjs as $subject) {
-  $tmp = findTime ('wed', pg_array_parse($subject['time'])); //finding number of subject in the day
-  foreach ($tmp as $value) {
-    $wednesday[$value] = $subject['subject'];
-  }
-}
-$query = "select * from subjectok where 'thu' = any (days)";
-$result = pg_query($db,$query);
-$resSubjs = pg_fetch_all($result);
-foreach ($resSubjs as $subject) {
-  $tmp = findTime ('thu', pg_array_parse($subject['time'])); //finding number of subject in the day
-  foreach ($tmp as $value) {
-    $thursday[$value] = $subject['subject'];
-  }
-}
-$query = "select * from subjectok where 'fri' = any (days)";
-$result = pg_query($db,$query);
-$resSubjs = pg_fetch_all($result);
-foreach ($resSubjs as $subject) {
-  $tmp = findTime ('fri', pg_array_parse($subject['time'])); //finding number of subject in the day
-  foreach ($tmp as $value) {
-    $friday[$value] = $subject['subject'];
-  }
-}
-$query = "select * from subjectok where 'sat' = any (days)";
-$result = pg_query($db,$query);
-$resSubjs = pg_fetch_all($result);
-foreach ($resSubjs as $subject) {
-  $tmp = findTime ('sat', pg_array_parse($subject['time'])); //finding number of subject in the day
-  foreach ($tmp as $value) {
-    $saturday[$value] = $subject['subject'];
-  }
-}
+function getSubjs (){
+  $monday    = ["","","","","",""];
+  $tuesday   = ["","","","","",""];
+  $wednesday = ["","","","","",""];
+  $thursday  = ["","","","","",""];
+  $friday    = ["","","","","",""];
+  $saturday  = ["","","","","",""];
+  $days = ["mon", "tue", "wed", "thu", "fri", "sat"];
 
-  for($i = 1; $i<6; $i++){
-      echo '<script> document.getElementById("mon'.$i.'").innerHTML =  "' . $monday[$i]    . '";' . ' </script>';
-      echo '<script> document.getElementById("tue'.$i.'").innerHTML =  "' . $tuesday[$i]   . '";' . ' </script>';
-      echo '<script> document.getElementById("wed'.$i.'").innerHTML =  "' . $wednesday[$i] . '";' . ' </script>';
-      echo '<script> document.getElementById("thu'.$i.'").innerHTML =  "' . $thursday[$i]  . '";' . ' </script>';
-      echo '<script> document.getElementById("fri'.$i.'").innerHTML =  "' . $friday[$i]    . '";' . ' </script>';
-      echo '<script> document.getElementById("sat'.$i.'").innerHTML =  "' . $saturday[$i]  . '";' . ' </script>';
+  foreach ($days as $day) {
+    $query = "select * from subjectok where '".$day."' = any (days)";
+    $result = pg_query($GLOBALS['db'],$query);
+    $resSubjs = pg_fetch_all($result);
+    foreach ($resSubjs as $subject) {
+      $tmp = findTime ($day, pg_array_parse($subject['time'])); //finding number of subject in the day
+      foreach ($tmp as $value) {
+        switch ($day) {
+          case "mon":
+            $monday[$value] = $subject['subject'];
+            break;
+          case "tue":
+            $tuesday[$value] = $subject['subject'];
+            break;
+          case "wed":
+            $wednesday[$value] = $subject['subject'];
+            break;
+          case "thu":
+            $thursday[$value] = $subject['subject'];
+            break;
+          case "fri":
+            $friday[$value] = $subject['subject'];
+            break;
+          case "sat":
+            $saturday[$value] = $subject['subject'];
+            break;
+          default:
+            echo "<script>alert('SWITCH ERROR')</script>";
+            break;
+        }
+      }
+    }  
+  }
+    for($i = 1; $i<6; $i++){
+        echo '<script> document.getElementById("mon'.$i.'").innerHTML =  "' . $monday[$i]    . '";' . ' </script>';
+        echo '<script> document.getElementById("tue'.$i.'").innerHTML =  "' . $tuesday[$i]   . '";' . ' </script>';
+        echo '<script> document.getElementById("wed'.$i.'").innerHTML =  "' . $wednesday[$i] . '";' . ' </script>';
+        echo '<script> document.getElementById("thu'.$i.'").innerHTML =  "' . $thursday[$i]  . '";' . ' </script>';
+        echo '<script> document.getElementById("fri'.$i.'").innerHTML =  "' . $friday[$i]    . '";' . ' </script>';
+        echo '<script> document.getElementById("sat'.$i.'").innerHTML =  "' . $saturday[$i]  . '";' . ' </script>';
+
+      $GLOBALS["monday"] = $monday;
+      $GLOBALS["tuesday"] = $tuesday;
+      $GLOBALS["wednesday"] = $wednesday;
+      $GLOBALS["thursday"] = $thursday;
+      $GLOBALS["friday"] = $friday;
+      $GLOBALS["saturday"] = $saturday;
+    }
   }
 
 
 
   if (isset($_POST['save'])){
-    $query = "delete from subjectok where subject = '$_POST[subj]'";
-    $result = pg_query($db,$query);
+    $weekdays = ["mon", "tue", "wed", "thu", "fri", "sat"];
+
     $time = "{";
     $days= "{";
-    if ($_POST['Mon'] == 1) {
-      $time = $time. "{mon,";
-      $days = $days. "mon,";
-      $AOI = $_POST['monTime'];
+
+    foreach ($weekdays as $day) {
+
+      $time = $time. "{".$day.",";
+      $days = $days. $day.",";
+      $AOI = $_POST[$day.'Time'];
       $n = sizeof($AOI);
       for ($i=0; $i < $n; $i++) { 
-          if ($monday[$AOI[$i]] == "")
+        switch ($day) {
+          case "mon":
+            $tmp = $monday[$value];
+            break;
+          case "tue":
+            $tmp = $tuesday[$value];
+            break;
+          case "wed":
+            $tmp = $wednesday[$value];
+            break;
+          case "thu":
+            $tmp = $thursday[$value];
+            break;
+          case "fri":
+            $tmp = $friday[$value];
+            break;
+          case "sat":
+            $tmp = $saturday[$value];
+            break;
+          default:
+            echo "<script>alert('SWITCH ERROR')</script>";
+            break;
+        }
+          if ($tmp[$AOI[$i]] == "")
             $time = $time . $AOI[$i].",";
           else $time = $time."0,";
       }
@@ -430,8 +445,9 @@ foreach ($resSubjs as $subject) {
       }
       $time = substr($time,0,-1). "},";
     }
-    if ($_POST['Tue'] == 1) {
-      $days = $days. "tue,";
+
+
+     /* $days = $days. "tue,";
       $time = $time . "{tue,";
       $AOI = $_POST['tueTime'];
       $n = sizeof($AOI);
@@ -444,8 +460,6 @@ foreach ($resSubjs as $subject) {
         $time = $time."0,";
       }
       $time = substr($time,0,-1). "},";
-    }
-    if ($_POST['Wed'] == 1) {
       $days = $days. "wed,";
       $time = $time . "{wed,";
       $AOI = $_POST['wedTime'];
@@ -459,8 +473,6 @@ foreach ($resSubjs as $subject) {
         $time = $time."0,";
       }
       $time = substr($time,0,-1). "},";
-    }
-    if ($_POST['Thu'] == 1) {
       $days = $days. "thu,";
       $time = $time . "{thu,";
       $AOI = $_POST['thuTime'];
@@ -474,8 +486,6 @@ foreach ($resSubjs as $subject) {
         $time = $time."0,";
       }
       $time = substr($time,0,-1). "},";
-    }
-    if ($_POST['Fri'] == 1) {
       $days = $days. "fri,";
       $time = $time . "{fri,";
       $AOI = $_POST['friTime'];
@@ -489,8 +499,6 @@ foreach ($resSubjs as $subject) {
         $time = $time."0,";
       }
       $time = substr($time,0,-1). "},";
-    }
-    if ($_POST['Sat'] == 1) {
       $days = $days. "sat,";
       $time = $time . "{sat,";
       $AOI = $_POST['satTime'];
@@ -503,24 +511,42 @@ foreach ($resSubjs as $subject) {
        for ($i=$n; $i<6; $i++){
         $time = $time."0,";
       }
-      $time = substr($time,0,-1). "},";
-    }
+      $time = substr($time,0,-1). "},";*/
     $days = substr($days,0,-1)."}";
     $time = substr($time,0,-1)."}";
-    $query = "INSERT INTO subjectok values ('$_POST[subj]','$sched','', '$days', '$time')";
-    echo $query;
 
+    echo "days: ".$days;
+    echo "time: ".$time;
+
+    $query = "select exists(select subject from subjectok where subject='".$_POST[subj]."');";
     $result = pg_query($db,$query);
-    
+    $exist = pg_fetch_row($result)[0];
+    if ($exist=='f'){
+      echo "NOT EXIST " ;
+      $query = "INSERT INTO subjectok values ('$_POST[subj]','$sched','', '$days', '$time')";
+      $result = pg_query($db,$query);
+    }
+    else {
+      echo "EXIST " ;
+      $query = "UPDATE subjectok SET days = '".$days."' where subject = '".$_POST[subj]."';" ;
+      $result = pg_query($db,$query);
+      $query = "UPDATE subjectok SET time = '".$time."' where subject = '".$_POST[subj]."';" ;
+      $result = pg_query($db,$query);
+    }
+
+
     unset($_POST['save']);
+    getSubjs();
   }
   if (isset($_POST['del'])){
     
+    $query = "delete from task where subject = '$_POST[subj]'";
+    $result = pg_query($db,$query);
+
 
     $query = "delete from subjectok where subject = '$_POST[subj]'";
-    echo $query;
     $result = pg_query($db,$query);
-    
+    getSubjs();
     unset($_POST['del']);
   }
   ?>

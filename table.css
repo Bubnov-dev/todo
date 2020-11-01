@@ -1,4 +1,6 @@
 <style>
+
+
     body {
       font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       font-size: 16px;
@@ -8,7 +10,7 @@
       background-color: #fff;
       margin: 0;
       padding: 0;
-      background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+      background: cover linear-gradient(45deg, #EECFBA, #C5DDE8);
     }
 
     body>table{
