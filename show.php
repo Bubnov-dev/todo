@@ -48,9 +48,10 @@
             <form method="POST">
             <input id="modalName" type="text" name="modalName">
             <input style="display: none" id="autorf" type="submit" value="refresh" name="refresh">
-            <input type="text" name="task">
-            <input type="text" name="deadline">
-            <input type="text" name="description"><br>
+            <input type="text" name="task" placeholder="task">
+            <input type="text" name="deadlineDate" placeholder="deadline(date)">
+            <input type="text" name="deadlineTime" placeholder="deadline(time)">
+            <input type="text" name="description" placeholder="description"><br>
             <input type="submit" value="Сохранить" name="saveInfo">
             <input type="submit" value="Уыдалить" name="delInfo">
             </form>
@@ -225,7 +226,7 @@
   </div>
 <a href="red.php">Главная</a>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
       var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
       console.log(scrollbar);
@@ -233,7 +234,6 @@
       var allClose = document.querySelectorAll('[href="#close"]');
       for(let elem of allOpen){
         elem.addEventListener('click', function () {
-          alert("ok");
           document.getElementById("modalName").value = elem.innerHTML;
           document.body.style.overflow = 'hidden';
           document.querySelector('#openModal').style.marginLeft = scrollbar;
@@ -252,14 +252,14 @@
     });
   </script>
 <?php
-
 //header("location: /red.php/");
-
+/*
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
-
+*/
 include("func.php");
+include("push.php");
   $dbuser = "postgres";
 
   $dbpass = "2001";
@@ -270,6 +270,8 @@ include("func.php");
 
   $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
 
+
+getActualTasks($db);
   $sched = "itmo";
   if($_SESSION['sched']!=null){
     $sched=$_SESSION['sched'];
@@ -277,68 +279,37 @@ include("func.php");
   $_SESSION['sched']= $sched;
   $query = "select schedule from schedule where login = 'Kolya'";
   $result = pg_query($db, $query);
+ 
   $rows=pg_fetch_all_columns($result);
   $i=0;
   foreach ($rows as $tmp) {
     $scheds[$i] = $tmp;
-    echo $i." hey:".$scheds[$i]."<br>";
     echo "<script>document.getElementById('schedForm').innerHTML += '<option name=\"".$scheds[$i]."\">".$scheds[$i]."</option>';
           </script>";
     $i++;
 
   }
 if (isset($_POST['choose_sched'])){
-     echo $sched = $_POST['select_sched'];
+     $sched = $_POST['select_sched'];
      $_SESSION['sched']= $sched;
-     echo "<br>|||||||".$_SESSION['sched'];
 
     }
 getSubjs();
-    if(isset($_POST['saveInfo'])){
-      echo $_POST["check"];
-      $task = $_POST['task'];
-      $deadline = $_POST['deadline'];
-      $description = $_POST['description'];
-      $subj = $_POST['modal'];
-      $query ="INSERT INTO TASK VALUES ('".$task."', '".$subj. "', '".$deadline."', '".$description."')";
-      echo $query;
-      $result = pg_query($db, $query);
-      unset($_POST['saveInfo']);
-    }
 
     if(isset($_POST['delInfo'])){
       $query = "delete from task where subject = ".$_POST['modal'];
       $result = pg_query($db, $query);
     }
 
-   /* echo "
-    <script>
-    document.addEventListener(\"DOMContentLoaded\", function () {
-      var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
-      console.log(scrollbar);
-      var allOpen = document.querySelectorAll('[href=\"#openModal\"]');
-      var allClose = document.querySelectorAll('[href=\"#close\"]');
-      for(let elem of allOpen){
-        elem.addEventListener('click', function () {
-          document.getElementById(\"modal-text\").innerHTML = elem.innerHTML;
-          document.getElementById(\"modalName\").value = elem.innerHTML;
-          document.body.style.overflow = 'hidden';
-          document.querySelector('#openModal').style.marginLeft = scrollbar;
-          //document.getElementById(\"autorf\").click();
-        });
-      }
-      for (let elem of allClose){
-        elem.addEventListener('click', function () {
-          //document.getElementById('save').setAttribute (\"name\", \"close\");
-          document.body.style.overflow = 'visible';
-          document.querySelector('#openModal').style.marginLeft = '0px';
-        });
-    }
-    });
-  </script>";*/
-  $tmp = "";
- 
+
+  if (isset($_POST["saveInfo"])){
+    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['desc']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."')";
+    echo $query;
+    $result = pg_query($db, $query);
+    unset($_POST['saveInfo']);
+
+  } 
   ?>
 
-</body>
+</body> 
 </html>

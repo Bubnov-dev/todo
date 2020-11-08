@@ -1,5 +1,4 @@
 <?php
-	echo"<script> alert('hey')</script>";
 function pg_array_parse($s, $start = 0, &$end = null)
 {
     if (empty($s) || $s[0] != '{') return null;
@@ -64,7 +63,7 @@ function getSubjs (){
     foreach ($resSubjs as $subject) {
       $tmp = findTime ($day, pg_array_parse($subject['time'])); //finding number of subject in the day
       foreach ($tmp as $value) {
-        echo $value." |";
+
         switch ($day) {
           case "mon":
             $monday[$value] = $subject['subject'];
