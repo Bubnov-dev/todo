@@ -1,8 +1,4 @@
-<?php session_start();
-  if ($_SESSION['auth']!=1) {
-    header("Location: start.php");
-  }
-?>
+<?php session_start();?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head>
@@ -33,9 +29,6 @@
 
 </head>
 <body>
-  <a href="/todo/logout.php/">
-   <button>Выйти</button>
-    </a>
   <form method="POST">
     <select id="schedForm" name="select_sched">
 
@@ -277,7 +270,6 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 */
-
 include("func.php");
 include("push.php");
   $dbuser = "postgres";
@@ -290,16 +282,14 @@ include("push.php");
 
   $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
 
-$login = $_SESSION['login'];
-echo $login;
+
 getActualTasks($db);
-  //$sched = $_POST['select_sched'];
-  //$sched = "itmo";
+  $sched = "itmo";
   if($_SESSION['sched']!=null){
     $sched=$_SESSION['sched'];
   }
   $_SESSION['sched']= $sched;
-  $query = "select schedule from schedule where login = '$login'";
+  $query = "select schedule from schedule where login = 'Kolya'";
   $result = pg_query($db, $query);
  
   $rows=pg_fetch_all_columns($result);
