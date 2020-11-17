@@ -25,6 +25,10 @@
       margin: 0;
       padding: 0;
     }
+    #tasks{
+      float:right;
+      border: 2px solid black;
+    }
   </style>
 
 </head>
@@ -58,7 +62,8 @@
             <input type="text" name="task" placeholder="task">
             <input type="text" name="deadlineDate" placeholder="deadline(date)">
             <input type="text" name="deadlineTime" placeholder="deadline(time)">
-            <input type="text" name="description" placeholder="description"><br>
+            <input type="text" name="description" placeholder="description">
+            <input type="text" name="img" placeholder="image link"><br>
             <input type="submit" value="Сохранить" name="saveInfo">
             <input type="submit" value="Уыдалить" name="delInfo">
             </form>
@@ -218,6 +223,13 @@
 </td>
 </tr>
 </table>
+<div id="tasks">
+  <div class="task">
+    <span class="taskName">задача</span>
+    <span class="taskDeadline">deadline</span>
+    <span class="taskImg"><img src=""></span>
+  </div>
+</div>
 <div id="openModal" class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -265,7 +277,6 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 */
-
 include("func.php");
 include("push.php");
   $dbuser = "postgres";
@@ -279,9 +290,8 @@ include("push.php");
   $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
 
 $login = $_SESSION['login'];
-echo $login;
+
 getActualTasks($db);
-  //$sched = $_POST['select_sched'];
   //$sched = "itmo";
   if($_SESSION['sched']!=null){
     $sched=$_SESSION['sched'];
@@ -313,12 +323,28 @@ getSubjs();
 
 
   if (isset($_POST["saveInfo"])){
-    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['desc']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."')";
+    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."')";
     echo $query;
     $result = pg_query($db, $query);
     unset($_POST['saveInfo']);
 
   } 
+
+
+  $query = "select * from task";
+  $result = pg_query($db ,$query);
+  $tasks = pg_fetch_all_columns($result);
+  $tasks2 = pg_fetch_all($result);
+  foreach ($tasks2 as $task) {
+    $taskName = $task['task'];
+    $taskSubj = $task['subject'];
+    $taskDeadline = $task['deadline'];
+    $taskImg = "no image";
+
+    echo "<script>document.getElementById('tasks').innerHTML +=  '<div class=\\\"task\\\"><span class=\\\"taskName\\\">".$taskName." on ".$taskSubj."</span><span class=\\\"taskDeadline\\\">".$taskDeadline."</span><span class=\\\"taskImg\\\">".$taskImg."</span></div>';
+          </script>";
+
+  }
   ?>
 
 </body> 

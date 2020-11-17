@@ -1,6 +1,6 @@
 <?php session_start();
   if ($_SESSION['auth']==1) {
-    header("Location: red.php");
+    header("Location: show.php");
   }
 ?>
 
@@ -71,7 +71,7 @@ if(isset($_POST['in'])){
 	if (password_verify($password, $pass[0]))
 		$_SESSION['auth'] = 1;
 		$_SESSION['login'] = $login;
-		header ('Location: red.php');
+		header ('Location: show.php');
 		
 	unset($_POST['in']);
 
