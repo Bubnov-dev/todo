@@ -1,3 +1,9 @@
+<?php session_start();
+  if ($_SESSION['auth']==1) {
+    header("Location: red.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,10 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="start.css">
 </head>
 <body >
-	<video loop muted autoplay>
-	
-		<source src="Motion.mp4"></source>
-	</video>
 
 	<div>
 		<form method="POST">
@@ -59,6 +61,7 @@ if(isset($_POST['in'])){
 
 	$query = "select password from userok where login = '".$_POST['name']."'";
 
+	$login = $_POST['name'];
 	$password = $_POST["password"];
 
 	$result = pg_query($db,$query);
@@ -66,7 +69,9 @@ if(isset($_POST['in'])){
 
 
 	if (password_verify($password, $pass[0]))
-		//header ('Location: file.php');
+		$_SESSION['auth'] = 1;
+		$_SESSION['login'] = $login;
+		header ('Location: red.php');
 		
 	unset($_POST['in']);
 
