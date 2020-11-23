@@ -1,12 +1,12 @@
-<?php session_start();
-  if ($_SESSION['auth']!=1) {
-    header("Location: start.php");
-}
-?>
+<?php session_start();?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="Расписание, домашняя работа, планировщик, распорядок">
+  <meta name="description" content="PLANIRATOR 9000 - это сервис, напрвленный на повышение успеваемости студентов и школьников. Сайт поможет наладить распорядок дня каждого пользователя, что способствует повышению вашей работоспособности.">
   <title>Создание</title>
   <link rel="stylesheet" type="text/css" href="table.css">
   <style>
@@ -63,11 +63,16 @@
   </style>
 
 </head>
+<header>
+<div class = "H_Name"><b>PLANIRATOR 9000<b></div>
+<p class = "H_menu">
+<a href="show.php" class="link">Расписание</a>
+<a href = "red.php" class="link">Задания</a>
+<a href = "#" class="link">Профиль</a>
+</ul>
+</header>
 <body>
-
-  <a href="/todo/logout.php/">
-   <button>Выйти</button>
-    </a>
+ 
  	<form id="mainForm" name="add" method="POST" action="">
  		<h2>Добавить предмет</h2><br>
  		<p>Название:</p><br>
@@ -270,15 +275,14 @@
 </td>
 </tr>
 </table>
-<a href="show.php">смотреть</a>
 <?php
 include("func.php");
 include("push.php");
-/*ini_set('error_reporting', E_ALL);
+ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
-*/
+
 
 $dbuser = "postgres";
 
@@ -291,7 +295,6 @@ $dbname = "postgres";
 $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
 
 $sched = $_SESSION['sched'];
-echo "---".$sched;
 
   $monday    = ["","","","","",""];
   $tuesday   = ["","","","","",""];
@@ -302,7 +305,7 @@ echo "---".$sched;
 
 
 getSubjs();
-getDays();
+//getDays();
 
 function format($str){
   echo $str;

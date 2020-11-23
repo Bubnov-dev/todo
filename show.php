@@ -1,10 +1,16 @@
-<?php session_start();?>
+<?php session_start();
+  if ($_SESSION['auth']!=1) {
+    header("Location: start.php");
+  }
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head>
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="Расписание, домашняя работа, планировщик, распорядок">
+  <meta name="description" content="PLANIRATOR 9000 - это сервис, напрвленный на повышение успеваемости студентов и школьников. Сайт поможет наладить распорядок дня каждого пользователя, что способствует повышению вашей работоспособности.">
   <title>Создание</title>
   <link rel="stylesheet" type="text/css" href="table.css">
   <style type="text/css">
@@ -28,12 +34,28 @@
   </style>
 
 </head>
+<header>
+<div class = "H_Name"><b>PLANIRATOR 9000<b></div>
+<p class = "H_menu">
+<a href="show.php" class="link">Расписание</a>
+<a href = "red.php" class="link">Задания</a>
+<a href = "#" class="link">Профиль</a>
+</ul>
+</header>
 <body>
+  <a href="/todo/logout.php/">
+   <button>Выйти</button>
+    </a>
   <form method="POST">
     <select id="schedForm" name="select_sched">
 
     </select>
     <input type="submit" name="choose_sched" value="choose">
+  </form>
+  <form method="POST">
+    <input type="text" name="sch">
+    <input type="submit" name="create" value="создать">
+
   </form>
  <h1 align="CENTER">Расписание</h1>
   <div id="openModal" class="modal">
@@ -236,7 +258,6 @@
       </div>
     </div>
   </div>
-<a href="red.php">Главная</a>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -265,11 +286,11 @@
   </script>
 <?php
 //header("location: /red.php/");
-/*
+
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
-*/
+
 include("func.php");
 include("push.php");
   $dbuser = "postgres";
@@ -282,15 +303,24 @@ include("push.php");
 
   $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
 
+$login = $_SESSION['login'];
 
 getActualTasks($db);
-  $sched = "itmo";
+  
+  if(isset($_POST['create'])){
+    $query = "INSERT INTO schedule values ('".$_POST['sch']."','$login')";
+    $result = pg_query($db, $query);
+    unset($_POST['create']);
+  }
+
   if($_SESSION['sched']!=null){
     $sched=$_SESSION['sched'];
   }
   $_SESSION['sched']= $sched;
-  $query = "select schedule from schedule where login = 'Kolya'";
+  $query = "select schedule from schedule where login = '$login'";
   $result = pg_query($db, $query);
+
+
  
   $rows=pg_fetch_all_columns($result);
   $i=0;
@@ -315,15 +345,14 @@ getSubjs();
 
 
   if (isset($_POST["saveInfo"])){
-    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."')";
-    echo $query;
+    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', '$sched')";
     $result = pg_query($db, $query);
     unset($_POST['saveInfo']);
 
   } 
 
 
-  $query = "select * from task";
+  $query = "select * from task where schedule='$sched'";
   $result = pg_query($db ,$query);
   $tasks = pg_fetch_all_columns($result);
   $tasks2 = pg_fetch_all($result);

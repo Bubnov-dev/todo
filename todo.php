@@ -50,6 +50,8 @@
 <p><input type = "submit" name = "insert_rasp" value = "insert_rasp"></p>
 <p><input type = "submit" name = "delete_rasp" value = "delete_rasp"></p>
 
+<p><input type = "submit" name = "pizdec" value = "pizdec"></p>
+<p><input type = "submit" name = "pizdec2" value = "pizdec2"></p>
 
 </form>
 

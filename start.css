@@ -1,0 +1,46 @@
+video{
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	position: fixed;
+	overflow: visible;
+	z-index: -1;
+}
+
+
+body{
+
+	margin: 0;
+	padding: 0;
+	margin-top: -2%;
+}
+
+
+div{
+	padding: 20px;
+	
+	position: fixed;
+	top: 35%;
+	left: 35%;
+	width: 30%;
+	height: 30%;
+	background: #211;
+	border-radius: 20px;
+}
+form{
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+}
+.field{
+	grid-row: 1;
+	color: #FFA;
+}
+.buttons{
+	background: #FFA;
+	width: 50%;
+	height: 50%;
+	margin-top:10%;
+	margin-left: 20%;
+	grid-row: 2;
+	
+}

@@ -1,10 +1,4 @@
-<?php session_start();
-  if ($_SESSION['auth']==1) {
-    header("Location: red.php");
-  }
-?>
-
-<!DOCTYPE html>
+		<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -12,6 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="start.css">
 </head>
 <body >
+	<video loop muted autoplay>
+	
+		<source src="Motion.mp4"></source>
+	</video>
 
 	<div>
 		<form method="POST">
@@ -33,22 +31,19 @@
 
 $dbuser = "postgres";
 
-  $dbpass = "2001";
+$dbpass = "2001";
 
-  $host = "localhost";
+$host = "localhost";
 
-  $dbname = "postgres";
+$dbname = "todo";
 
-  $db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
+$db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass");
 
 
 
 if(isset($_POST['up'])){
-	$name = $_POST["name"];
-	$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-	
 
-	$query = "INSERT INTO userok values ('$name', '$password')";
+	$query = "INSERT INTO userok values ('$_POST[name]','$_POST[password]')";
 
 	$result = pg_query($db,$query);
 
@@ -59,20 +54,13 @@ if(isset($_POST['up'])){
 
 if(isset($_POST['in'])){
 
-	$query = "select password from userok where login = '".$_POST['name']."'";
-
-	$login = $_POST['name'];
-	$password = $_POST["password"];
+	$query = "select password from userok where login = $_POST[login]";
 
 	$result = pg_query($db,$query);
-	$pass = pg_fetch_row($result);
 
+	if ($result = $_POST[password])
+		 header ('Location: login.php');
 
-	if (password_verify($password, $pass[0]))
-		$_SESSION['auth'] = 1;
-		$_SESSION['login'] = $login;
-		header ('Location: red.php');
-		
 	unset($_POST['in']);
 
 }

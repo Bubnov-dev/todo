@@ -19,7 +19,31 @@
       -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
       box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     }
+header{
+	width: 100%;
+	background: #FAEBD7 url(plan.jpg) no-repeat 5% 50%;;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	height: 115px;
+}
 
+.H_Name{
+	font-size: 50px;
+	padding-top: 10px;
+	text-align: center;
+	font-smooth: never;
+	-webkit-font-smoothing : none;
+}
+.H_menu{
+	list-style: none;
+	position: absolute;
+	top: 10px;
+	right: 100px;
+}
+.link{
+	color: black;
+	margin: 20px;
+	font-size: 20px;
+}
     table table{
       font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
       text-align: center;
@@ -28,7 +52,13 @@
       background: #E1E3E0;
       border-radius: 20px;
       border: none;
-    }
+}
+.day tr:nth-child(odd){
+	background:#ecf0f1;
+}
+.day tr:hover{
+	background-color: #fcf8e3;
+}
     th {
       font-size: 15px;
       font-weight: 300;
