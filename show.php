@@ -42,6 +42,11 @@
     </select>
     <input type="submit" name="choose_sched" value="choose">
   </form>
+  <form method="POST">
+    <input type="text" name="sch">
+    <input type="submit" name="create" value="создать">
+
+  </form>
  <h1 align="CENTER">Расписание</h1>
   <div id="openModal" class="modal">
     <div class="modal-dialog">
@@ -292,13 +297,21 @@ include("push.php");
 $login = $_SESSION['login'];
 
 getActualTasks($db);
-  //$sched = "itmo";
+  
+  if(isset($_POST['create'])){
+    $query = "INSERT INTO schedule values ('".$_POST['sch']."','$login')";
+    $result = pg_query($db, $query);
+    unset($_POST['create']);
+  }
+
   if($_SESSION['sched']!=null){
     $sched=$_SESSION['sched'];
   }
   $_SESSION['sched']= $sched;
   $query = "select schedule from schedule where login = '$login'";
   $result = pg_query($db, $query);
+
+
  
   $rows=pg_fetch_all_columns($result);
   $i=0;
@@ -323,7 +336,7 @@ getSubjs();
 
 
   if (isset($_POST["saveInfo"])){
-    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."')";
+    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', '$sched')";
     echo $query;
     $result = pg_query($db, $query);
     unset($_POST['saveInfo']);
@@ -331,7 +344,7 @@ getSubjs();
   } 
 
 
-  $query = "select * from task";
+  $query = "select * from task where schedule='$sched'";
   $result = pg_query($db ,$query);
   $tasks = pg_fetch_all_columns($result);
   $tasks2 = pg_fetch_all($result);

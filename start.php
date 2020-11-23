@@ -5,26 +5,36 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-	<meta charset="utf-8">
-	<title>start</title>
-	<link rel="stylesheet" type="text/css" href="start.css">
+   <meta charset="UTF-8">
+   <title>Авторизация</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="style.css" type="text/css">
+   <script src="script.js"></script>
 </head>
-<body >
+<body>
+<div class="dws-wrapper">
+   <div class="dws-form">
+   <label class="tab active" title="Вкладка 1">Authorization</label>
+   <label class="tab" title="Вкладка 2">Registration</label>
 
-	<div>
-		<form method="POST">
-		<p class="field">имя -    <input type = "text" name = "name" ></input></p>
+   <form class="tab-form" method="POST">
+   <input type="email" placeholder="Enter login" name="name">
+   <input type="password" placeholder="Enter password" name="password">
+   <input type="submit" class="button" name="in" value="Sign in">
+</form>
+<form class="tab-form del" method="POST">
+   
+   <input type="text" placeholder="Enter login" name="name">
+   <input type="password" placeholder="Enter password" name="password">
+   <input type="submit" class="button" name="up" value="Sign up">
 
-		<p class="field">пароль - <input type = "text" name = "password" ></input></p>
-
-		<input class="buttons" type = "submit" name = "in" value = "Sign in">
-
-		<input class="buttons" type = "submit" name = "up" value = "Sign up">
-		
-		</form>
-	</div>
+</form>
+</div>
+</div>
 </body>
 </html>
 
