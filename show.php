@@ -71,7 +71,7 @@
             k
           </p>
           <p>
-            <form method="POST">
+            <form method="POST" enctype='multipart/form-data'>
             <input id="modalName" type="text" name="modalName">
             <input style="display: none" id="autorf" type="submit" value="refresh" name="refresh">
             <input type="text" name="task" placeholder="task">
@@ -79,9 +79,12 @@
             <input type="text" name="deadlineTime" placeholder="deadline(time)">
             <input type="text" name="description" placeholder="description">
             <input type="text" name="img" placeholder="image link"><br>
+            <input type='file' name='filename' size='10' /><br /><br />
             <input type="submit" value="Сохранить" name="saveInfo">
-            <input type="submit" value="Уыдалить" name="delInfo">
+            <input type="submit" value="Удалить" name="delInfo">
+            
             </form>
+           
           </p>
         </div>
       </div>
@@ -345,8 +348,11 @@ getSubjs();
 
 
   if (isset($_POST["saveInfo"])){
-    $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', '$sched')";
+    
+      $query = "insert into task values ('".$_POST['task']."', 'sub1', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', 'sch222', '".$_FILES['filename']."')";
     $result = pg_query($db, $query);
+    
+    
     unset($_POST['saveInfo']);
 
   } 
