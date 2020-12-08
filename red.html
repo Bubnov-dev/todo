@@ -1,0 +1,262 @@
+
+<!DOCTYPE HTML>
+<html>
+ <head>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="Расписание, домашняя работа, планировщик, распорядок">
+  <meta name="description" content="PLANIRATOR 9000 - это сервис, напрвленный на повышение успеваемости студентов и школьников. Сайт поможет наладить распорядок дня каждого пользователя, что способствует повышению вашей работоспособности.">
+  <title>Создание</title>
+  <link rel="stylesheet" type="text/css" href="table.css">
+  
+</head>
+<header>
+<div class = "H_Name"><b>PLANIRATOR 9000<b></div>
+<p class = "H_menu">
+<a href="show.php" class="link">Расписание</a>
+<a href = "main.html" class="link">Задания</a>
+<a href = "#" class="link">Профиль</a>
+</ul>
+</header>
+<body>
+ 
+  <form id="mainForm" name="add" method="POST" action="">
+    <h2>Добавить предмет</h2><br>
+    <p class="lessonNumber">Название:<input type="text" name="subj" size="30"><br></p>
+    
+    <div><span class="dayName">Дни недели:</span> 
+    <span class="lessonNumber">Номер пары</span>
+        <p><span class="dayName">Понедельник  </span>
+        <input type="checkbox" class="custom-checkbox" id="M0" name="monTime[]" value="0">
+        <label for="M0"></label>
+        <input type="checkbox" class="custom-checkbox" id="M1" name="monTime[]" value="1">
+        <label for="M1"></label>
+        <input type="checkbox" class="custom-checkbox" id="M2" name="monTime[]" value="2">
+        <label for="M2"></label>
+        <input type="checkbox" class="custom-checkbox" id="M3" name="monTime[]" value="3">
+        <label for="M3"></label>
+        <input type="checkbox" class="custom-checkbox" id="M4" name="monTime[]" value="4">
+        <label for="M4"></label>
+        <hr align="left" width="300" size="2"/>
+
+        <span class="dayName">Вторник  </span>
+        <input type="checkbox" class="custom-checkbox" id="T0" name="tueTime[]" value="0">
+        <label for="T0"></label>
+        <input type="checkbox" class="custom-checkbox" id="T1" name="tueTime[]" value="1">
+        <label for="T1"></label>
+        <input type="checkbox" class="custom-checkbox" id="T2" name="tueTime[]" value="2">
+        <label for="T2"></label>
+        <input type="checkbox" class="custom-checkbox" id="T3" name="tueTime[]" value="3">
+        <label for="T3"></label>
+        <input type="checkbox" class="custom-checkbox" id="T4" name="tueTime[]" value="4">
+        <label for="T4"></label>
+        <hr align="left" width="300" size="2"/>
+
+        <span class="dayName">Среда  </span>
+        <input type="checkbox" class="custom-checkbox" id="W0" name="wedTime[]" value="0">
+        <label for="W0"></label>
+        <input type="checkbox" class="custom-checkbox" id="W1" name="wedTime[]" value="1">
+        <label for="W1"></label>
+        <input type="checkbox" class="custom-checkbox" id="W2" name="wedTime[]" value="2">
+        <label for="W2"></label>
+        <input type="checkbox" class="custom-checkbox" id="W3" name="wedTime[]" value="3">
+        <label for="W3"></label>
+        <input type="checkbox" class="custom-checkbox" id="W4" name="wedTime[]" value="4">
+        <label for="W4"></label>
+        <hr align="left" width="300" size="2"/>
+
+        <span class="dayName">Четверг  </span>
+        <input type="checkbox" class="custom-checkbox" id="Th0" name="thuTime[]" value="0">
+        <label for="Th0"></label>
+        <input type="checkbox" class="custom-checkbox" id="Th1" name="thuTime[]" value="1">
+        <label for="Th1"></label>
+        <input type="checkbox" class="custom-checkbox" id="Th2" name="thuTime[]" value="2">
+        <label for="Th2"></label>
+        <input type="checkbox" class="custom-checkbox" id="Th3" name="thuTime[]" value="3">
+        <label for="Th3"></label>
+        <input type="checkbox" class="custom-checkbox" id="Th4" name="thuTime[]" value="4">
+        <label for="Th4"></label>
+        <hr align="left" width="300" size="2"/>
+
+        <span class="dayName">Пятница  </span>
+        <input type="checkbox" class="custom-checkbox" id="F0" name="friTime[]" value="0">
+        <label for="F0"></label>
+        <input type="checkbox" class="custom-checkbox" id="F1" name="friTime[]" value="1">
+        <label for="F1"></label>
+        <input type="checkbox" class="custom-checkbox" id="F2" name="friTime[]" value="2">
+        <label for="F2"></label>
+        <input type="checkbox" class="custom-checkbox" id="F3" name="friTime[]" value="3">
+        <label for="F3"></label>
+        <input type="checkbox" class="custom-checkbox" id="F4" name="friTime[]" value="4">
+        <label for="F4"></label>
+        <hr align="left" width="300" size="2"/>
+
+        <span class="dayName">Суббота  </span>
+        <input type="checkbox" class="custom-checkbox" id="S0" name="satTime[]" value="0">
+        <label for="S0"></label>
+        <input type="checkbox" class="custom-checkbox" id="S1" name="satTime[]" value="1">
+        <label for="S1"></label>
+        <input type="checkbox" class="custom-checkbox" id="S2" name="satTime[]" value="2">
+        <label for="S2"></label>
+        <input type="checkbox" class="custom-checkbox" id="S3" name="satTime[]" value="3">
+        <label for="S3"></label>
+        <input type="checkbox" class="custom-checkbox" id="S4" name="satTime[]" value="4">
+        <label for="S4"></label>
+        <hr align="left" width="300" size="2"/>
+      </p>
+      </div>
+        <p><input type="submit" name="save" value="Добавить">
+        <input type="submit" name="del"  value="Удалить"></p>
+    </form>
+ <h1 align="CENTER">Расписание</h1>
+ <p align="CENTER">
+<table border="0" cellspacing="30" align="CENTER"><tr><td>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Понедельник</h5>
+      <p class="card-text">
+        <table border="1" name="pn">
+    <tr>
+    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
+    </tr>
+    <td>1</td > <td id="mon0"></td> <td></td>
+    </tr>
+    <td>2</td> <td id="mon1"></td> <td></td>
+    </tr>
+    <td>3</td> <td id="mon2"></td> <td></td>
+    </tr>
+    <td>4</td> <td id="mon3"></td> <td></td>
+    </tr>
+    <td>5</td> <td id="mon4"></td> <td></td>
+    </tr>
+    </table>
+  </p>
+    </div>
+  </div>
+ </td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Вторник</h5>
+      <p class="card-text">
+        <table border="1" name="vt">
+    <tr>
+    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
+    </tr>
+    <td>1</td> <td id="tue0"></td> <td></td>
+    </tr>
+    <td>2</td> <td id="tue1"></td> <td></td>
+    </tr>
+    <td>3</td> <td id="tue2"></td> <td></td>
+    </tr>
+    <td>4</td> <td id="tue3"></td> <td></td>
+    </tr>
+    <td>5</td> <td id="tue4"></td> <td></td>
+    </tr>
+    </table>
+  </p>
+    </div>
+  </div>
+</td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Среда</h5>
+      <p class="card-text">
+        <table border="1" name="sr">
+    <tr>
+    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
+    </tr>
+    <td>1</td> <td id="wed0"></td> <td></td>
+    </tr>
+    <td>2</td> <td id="wed1"></td> <td></td>
+    </tr>
+    <td>3</td> <td id="wed2"></td> <td></td>
+    </tr>
+    <td>4</td> <td id="wed3"></td> <td></td>
+    </tr>
+    <td>5</td> <td id="wed4"></td> <td></td>
+    </tr>
+    </table>
+  </p>
+    </div>
+  </div>
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Четверг</h5>
+      <p class="card-text">
+        <table border="1" name="ch">
+    <tr>
+    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
+    </tr>
+    <td>1</td> <td id="thu0"></td> <td></td>
+    </tr>
+    <td>2</td> <td id="thu1"></td> <td></td>
+    </tr>
+    <td>3</td> <td id="thu2"></td> <td></td>
+    </tr>
+    <td>4</td> <td id="thu3"></td> <td></td>
+    </tr>
+    <td>5</td> <td id="thu4"></td> <td></td>
+    </table>
+  </p>
+    </div>
+  </div>
+ </td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Пятница</h5>
+      <p class="card-text">
+        <table border="1" name="pt">
+    <tr>
+    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
+    </tr>
+    <td>1</td> <td id="fri0"></td> <td></td>
+    </tr>
+    <td>2</td> <td id="fri1"></td> <td></td>
+    </tr>
+    <td>3</td> <td id="fri2"></td> <td></td>
+    </tr>
+    <td>4</td> <td id="fri3"></td> <td></td>
+    </tr>
+    <td>5</td> <td id="fri4"></td> <td></td>
+    </tr>
+    </table>
+  </p>
+    </div>
+  </div>
+</td><td>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Суббота</h5>
+      <p class="card-text">
+        <table border="1" name="sub">
+    <tr>
+    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
+    </tr>
+    <td>1</td> <td id="sat0"></td> <td></td>
+    </tr>
+    <td>2</td> <td id="sat1"></td> <td></td>
+    </tr>
+    <td>3</td> <td id="sat2"></td> <td></td>
+    </tr>
+    <td>4</td> <td id="sat3"></td> <td></td>
+    </tr>
+    <td>5</td> <td id="sat4"></td> <td></td>
+    </tr>
+    </table>
+  </p>
+    </div>
+  </div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

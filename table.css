@@ -1,24 +1,24 @@
 <style>
 
+body {
+  font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #292b2c;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  background: cover linear-gradient(45deg, #EECFBA, #C5DDE8);
+}
 
-    body {
-      font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.5;
-      color: #292b2c;
-      background-color: #fff;
-      margin: 0;
-      padding: 0;
-      background: cover linear-gradient(45deg, #EECFBA, #C5DDE8);
-    }
+body>table{
+  background: linear-gradient(45deg, #ddbea9, #b4ccd7);
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
 
-    body>table{
-      background: linear-gradient(45deg, #ddbea9, #b4ccd7);
-      -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-      -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-      box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-    }
 header{
 	width: 100%;
 	background: #FAEBD7 url(plan.jpg) no-repeat 5% 50%;;
@@ -44,160 +44,182 @@ header{
 	margin: 20px;
 	font-size: 20px;
 }
-    table table{
-      font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-      text-align: center;
-      border-collapse: collapse;
-      border-spacing: 5px;
-      background: #E1E3E0;
-      border-radius: 20px;
-      border: none;
+table table{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  background: #E1E3E0;
+  border-radius: 20px;
+  border: none;
 }
-.day tr:nth-child(odd){
+.day tr:nth-child(even){
 	background:#ecf0f1;
 }
-.day tr:hover{
+tr .hover:hover{
 	background-color: #fcf8e3;
 }
-    th {
-      font-size: 15px;
-      font-weight: 300;
-      padding: 7px 5px;
-      border-bottom: 2px solid #F56433;
-      color: #F56433;
-      }
-    tbody tr:nth-child(1) {
-      border-bottom: 2px solid #F56433;
-      }
-    td {
-      padding: 5px;
-      color: #8D8173;
-      }
+.click{
+	max-width: 480px; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
+  color: black;
+  text-decoration: none;	
+}
+th {
+  font-size: 15px;
+  font-weight: 300;
+  padding: 7px 5px;
+  border-bottom: 2px solid #F56433;
+  color: #F56433;
+}
+tbody tr:nth-child(1) {
+  border-bottom: 2px solid #F56433;
+}
+td {
+  padding: 5px;
+  color: #8D8173;
+}
+h5{
+  font-size: 20px;
+}
 
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 30px auto;}
+}
+  .modal-content {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
 
-    h5{
-      font-size: 20px;
-    }
-    .modal {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1050;
-      opacity: 0;
-      -webkit-transition: opacity 400ms ease-in;
-      -moz-transition: opacity 400ms ease-in;
-      transition: opacity 400ms ease-in;
-      pointer-events: none;
-    }
+@media (min-width: 768px) {
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);}
+  }
 
+  .modal-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eceeef;
+}
 
+  .modal-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
 
-    .modal:target {
-      opacity: 1;
-      pointer-events: auto;
-      overflow-y: auto;
-    }
-
-
-    .modal-dialog {
-      position: relative;
-      width: auto;
-      margin: 10px;
-    }
-
-    @media (min-width: 576px) {
-      .modal-dialog {
-        max-width: 500px;
-        margin: 30px auto;
-      }
-    }
-
-
-    .modal-content {
-      position: relative;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      background-color: #fff;
-      -webkit-background-clip: padding-box;
-      background-clip: padding-box;
-      border: 1px solid rgba(0, 0, 0, .2);
-      border-radius: .3rem;
-      outline: 0;
-    }
-
-    @media (min-width: 768px) {
-      .modal-content {
-        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-      }
-    }
-
-
-    .modal-header {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: justify;
-      -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
-      padding: 15px;
-      border-bottom: 1px solid #eceeef;
-    }
-
-    .modal-title {
-      margin-top: 0;
-      margin-bottom: 0;
-      line-height: 1.5;
-      font-size: 1.25rem;
-      font-weight: 500;
+  .close {
+    float: right;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
     }
 
 
-    .close {
-      float: right;
-      font-family: sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1;
-      color: #000;
-      text-shadow: 0 1px 0 #fff;
-      opacity: .5;
-      text-decoration: none;
+  .close:focus,
+  .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .75;
+  }
+
+
+  .modal-body {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow: auto;
     }
+.link{
+	text-decoration: none;
+}
+.link:hover { 
+  border-bottom: .07em solid;
+}
+.link:active {
+  border-bottom: 1px dashed;
+}
+.m{
+color:yellow;
+}
+.dayName{
+  font-size:18px;
+}
+.lessonNumber{
+  font-size:17px;
+}
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.custom-checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.custom-checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+.custom-checkbox:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
 
 
-    .close:focus,
-    .close:hover {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-      opacity: .75;
-    }
-
-
-    .modal-body {
-      position: relative;
-      -webkit-box-flex: 1;
-      -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-      padding: 15px;
-      overflow: auto;
-    }
   </style>
+
+}
