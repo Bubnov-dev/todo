@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php session_start();
+  if ($_SESSION['auth']!=1) {
+    header("Location: start.php");
+  }
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head>
@@ -72,7 +76,9 @@
 </ul>
 </header>
 <body>
- 
+  <a href="/todo/logout.php/">
+   <button>Выйти</button>
+    </a>
  	<form id="mainForm" name="add" method="POST" action="">
  		<h2>Добавить предмет</h2><br>
  		<p>Название:</p><br>

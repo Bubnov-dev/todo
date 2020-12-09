@@ -1,5 +1,6 @@
 <style>
 
+
 body {
   font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -27,8 +28,8 @@ header{
 }
 
 .H_Name{
-	font-size: 50px;
-	padding-top: 10px;
+	font-size: 350%;
+	padding-top: 1%;
 	text-align: center;
 	font-smooth: never;
 	-webkit-font-smoothing : none;
@@ -36,8 +37,8 @@ header{
 .H_menu{
 	list-style: none;
 	position: absolute;
-	top: 10px;
-	right: 100px;
+	top: 5%;
+	right: 6%;
 }
 .link{
 	color: black;
