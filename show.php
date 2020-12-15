@@ -349,7 +349,8 @@ getSubjs();
 
   if (isset($_POST["saveInfo"])){
     
-      $query = "insert into task values ('".$_POST['task']."', 'sub1', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', 'sch222', '".$_FILES['filename']."')";
+      $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', '".$sched."', '".$_FILES['filename']."')";
+      echo "alert('".$query."');";
     $result = pg_query($db, $query);
     
     
