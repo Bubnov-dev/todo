@@ -55,7 +55,7 @@
         </div>
         <div class="modal-body"> 
             <form method="POST" enctype='multipart/form-data'>
-            <div class="field"><label>Предмет:</label><input id="modalName" type="text" name="modalName" class="modalName"></div><br>
+            <div class="field"><label>Предмет:</label><input id="modalName" type="text" name="modalName" class="modalName" ></div><br>
             <input style="display: none" id="autorf" type="submit" value="refresh" name="refresh">
             <div class="field"><label for="task-field">Задание:</label><input type="text" name="task" placeholder="задание" id="task-field"></div><br>
             <div class="field"><label for="deadlineDate-field">День сдачи:</label><input type="date" name="deadlineDate" placeholder="deadline(date)" id="deadlineDate-field"></div>
@@ -281,7 +281,6 @@
   </div>
 
 
-
   
 <?php
 //header("location: /red.php/");
@@ -370,17 +369,22 @@ getSubjs();
 
   }
   ?>
+
 <script type="text/javascript">
-  var buttons = document.getElementsByClassName('click');
+      
+    document.addEventListener("DOMContentLoaded", function () {
+      var allOpen = document.getElementsByClassName('click');
+      for(i=0; i<allOpen.length; i++){
+      }
+      for(let elem of allOpen){
+        elem.addEventListener('click', function () {
+          document.getElementById("modalName").value = elem.innerHTML;
+       });
+      }
+    }
+    );
+  </script>
 
-  for(i=0; i<buttons.length; i++){
-    buttons[i].addEventListener('click', (document.getElementById('modalName').innerHTML=buttons[i].innerHTML));
-  }
 
-  function addToInput(nameOfSub){
-    alert ("igor tebe ne nuzna viska");
-    document.getElementById('modalName').innerHTML=nameOfSub;
-  }
-</script>
 </body> 
 </html>
