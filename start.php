@@ -1,4 +1,5 @@
 <?php session_start();
+
   if ($_SESSION['auth']==1) {
     header("Location: show.php");
   }
@@ -54,6 +55,18 @@ $dbuser = "postgres";
 
 
 if(isset($_POST['up'])){
+  
+  if(empty($_POST['name']) || empty($_POST['password'])){
+    
+    ?>
+    <script type="text/javascript">
+      alert("pusto");
+    </script>
+    <?php
+  }
+  
+  
+  else {
 	$name = $_POST["name"];
 	$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 	
@@ -61,14 +74,24 @@ if(isset($_POST['up'])){
 	$query = "INSERT INTO userok values ('$name', '$password')";
 
 	$result = pg_query($db,$query);
-
+}
 
 	unset($_POST['up']);
 
 }
 
 if(isset($_POST['in'])){
+  if(empty($_POST['name']) || empty($_POST['password'])){ 
+    
+    ?>
+    <script type="text/javascript">
+      alert("pusto");
+    </script>
+    <?php
+  }
 
+
+  else{
 	$query = "select password from userok where login = '".$_POST['name']."'";
 
 	$login = $_POST['name'];
@@ -82,7 +105,7 @@ if(isset($_POST['in'])){
 		$_SESSION['auth'] = 1;
 		$_SESSION['login'] = $login;
 		header ('Location: show.php');
-		
+		}
 	unset($_POST['in']);
 
 }

@@ -3,297 +3,293 @@
     header("Location: start.php");
   }
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
- <head>
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Расписание</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="keywords" content="Расписание, домашняя работа, планировщик, распорядок">
   <meta name="description" content="PLANIRATOR 9000 - это сервис, напрвленный на повышение успеваемости студентов и школьников. Сайт поможет наладить распорядок дня каждого пользователя, что способствует повышению вашей работоспособности.">
-  <title>Создание</title>
-  <link rel="stylesheet" type="text/css" href="table.css">
-  <style type="text/css">
-    html{
-      background: linear-gradient(45deg, #EECFBA, #C5DDE8);
-      height: 100%;
-    }
-    body {
-      font-family: -apple-system, system-ui, garamond, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.5;
-      color: #292b2c;
-      margin: 0;
-      padding: 0;
-    }
-    #tasks{
-      float:right;
-      border: 2px solid black;
-    }
-  </style>
-
+  <link rel="stylesheet" type="text/css" href="css/table.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" rel="stylesheet">
 </head>
-<header>
-<div class = "H_Name"><b>PLANIRATOR 9000<b></div>
-<p class = "H_menu">
-<a href="show.php" class="link">Расписание</a>
-<a href = "red.php" class="link">Задания</a>
-<a href = "#" class="link">Профиль</a>
-</ul>
-</header>
 <body>
-  <a href="/todo/logout.php/">
-   <button>Выйти</button>
-    </a>
-  <form method="POST">
+    <div class="hader">
+        <div class="layout-positioner">
+            <div class=layout-hader>
+              <div><img src="img/logo-2.png"></div>
+              <div class="PLANIRATOR hader-content"><a>PLANIRATOR</a></div>
+              <div class="menu hader-content">
+                <p>
+                  <a href="red.php" class="page">Предметы</a>
+                  <a href = "main.php" class="page">Задания</a>
+                  <a href = "logout.php" class="page">Выход</a>
+                 </p>  
+              </div>    
+        </div>
+      </div>
+    </div>
+    <div>
+       <form method="POST">
     <select id="schedForm" name="select_sched">
 
     </select>
     <input type="submit" name="choose_sched" value="choose">
   </form>
-  <form method="POST">
-    <input type="text" name="sch">
+      <form method="POST">
+        <input type="text" name="sch">
     <input type="submit" name="create" value="создать">
-
-  </form>
- <h1 align="CENTER">Расписание</h1>
-  <div id="openModal" class="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+      </form>
+    </div>
+    <div class="text"><h1>Моё расписание</h1></div>
+    <hr align="content" class="hrr">
+    <div id="openModal" class="modal">
         <div class="modal-header">
-          <h3 class="modal-title">Информация</h3>
-          
-          <a href="#close" title="Close" class="close">×</a>
+          <h2 class="modal-title">Информация</h2> 
+          <hr class="modal-hr">
         </div>
-        <div class="modal-body">   
-          <p id="modal-text"> 
-            k
-          </p>
-          <p>
+        <div class="modal-body"> 
             <form method="POST" enctype='multipart/form-data'>
-            <input id="modalName" type="text" name="modalName">
+            <div class="field"><label>Предмет:</label><input id="modalName" type="text" name="modalName" class="modalName"></div><br>
             <input style="display: none" id="autorf" type="submit" value="refresh" name="refresh">
-            <input type="text" name="task" placeholder="task">
-            <input type="text" name="deadlineDate" placeholder="deadline(date)">
-            <input type="text" name="deadlineTime" placeholder="deadline(time)">
-            <input type="text" name="description" placeholder="description">
-            <input type="text" name="img" placeholder="image link"><br>
-            <input type='file' name='filename' size='10' /><br /><br />
-            <input type="submit" value="Сохранить" name="saveInfo">
-            <input type="submit" value="Удалить" name="delInfo">
-            
+            <div class="field"><label for="task-field">Задание:</label><input type="text" name="task" placeholder="задание" id="task-field"></div><br>
+            <div class="field"><label for="deadlineDate-field">День сдачи:</label><input type="date" name="deadlineDate" placeholder="deadline(date)" id="deadlineDate-field"></div>
+            <div class="field"><label for="deadlineTime-field">Время:</label><input type="time" name="deadlineTime" placeholder="deadline(time)" id="deadlineTime-field"></div><br>
+            <div class="field"><label for="img-field">Изображение:</label><input type="text" name="img" placeholder="cсылка на изображение" id="img-field"></div><br>
+            <div class="field"><label for="description-field">Описание:</label><br><textarea name="description" placeholder="Текст комментария" rows="5" cols="50" id="description-field"></textarea></div><br>
+            <div class="field"><input type="submit" value="Сохранить" name="saveInfo"></div>
+            <div class="field"><input type="submit" value="Удалить" name="delInfo"></div>
             </form>
-           
-          </p>
         </div>
+  </div>
+  <div class="tables">
+    <div class="table1" name="pn">
+      <div class="day">Понедельник</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="mon0" href="#openModal" rel="modal:open"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="mon1" href="#openModal" rel="modal:open"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="mon2" href="#openModal" rel="modal:open"></a></div>
+              <div class="cell cell3" ></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="mon3" href="#openModal" rel="modal:open"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="mon4" href="#openModal" rel="modal:open"></a></div>
+              <div class="cell cell3"></div>
+            </div>
       </div>
     </div>
-  </div>
-  <p>
-
- <p align="CENTER">
-<table border="0" cellspacing="30" align="CENTER"><tr><td>
-<div class="card-deck">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Понедельник</h5>
-      <p class="card-text">
-      	<table border="1" name="pn">
-		<tr>
-		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
-		</tr>
-		<td>1</td> <td><a id="mon0" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>2</td> <td><a id="mon1" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>3</td> <td><a id="mon2" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>4</td> <td><a id="mon3" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>5</td> <td><a id="mon4" href="#openModal"></a></td> <td></td>
-		</tr>
-		</table>
-	</p>
-    </div>
-  </div>
- </td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Вторник</h5>
-      <p class="card-text">
-      	<table border="1" name="vt">
-		<tr>
-		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
-		</tr>
-		<td>1</td> <td><a id="tue0" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>2</td> <td><a id="tue1" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>3</td> <td><a id="tue2" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>4</td> <td><a id="tue3" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>5</td> <td><a id="tue4" href="#openModal"></a></td> <td></td>
-		</tr>
-		</table>
-	</p>
-    </div>
-  </div>
-</td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Среда</h5>
-      <p class="card-text">
-      	<table border="1" name="sr">
-		<tr>
-		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
-		</tr>
-		<td>1</td> <td><a id="wed0" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>2</td> <td><a id="wed1" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>3</td> <td><a id="wed2" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>4</td> <td><a id="wed3" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>5</td> <td><a id="wed4" href="#openModal"></a></td> <td></td>
-		</tr>
-		</table>
-	</p>
-    </div>
-  </div>
-</div>
-</td>
-</tr>
-<tr>
-	<td>
-<div class="card-deck">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Четверг</h5>
-      <p class="card-text">
-      	<table border="1" name="ch">
-		<tr>
-		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
-		</tr>
-		<td>1</td> <td><a id="thu0" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>2</td> <td><a id="thu1" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>3</td> <td><a id="thu2" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>4</td> <td><a id="thu3" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>5</td> <td><a id="thu4" href="#openModal"></a></td> <td></td>
-		</tr>
-		</table>
-	</p>
-    </div>
-  </div>
- </td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Пятница</h5>
-      <p class="card-text">
-      	<table border="1" name="pt">
-		<tr>
-		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
-		</tr>
-		<td>1</td> <td><a id="fri0" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>2</td> <td><a id="fri1" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>3</td> <td><a id="fri2" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>4</td> <td><a id="fri3" href="#openModal">ваыва</a></td> <td></td>
-		</tr>
-		<td>5</td> <td><a id="fri4" href="#openModal"></a></td> <td></td>
-		</tr>
-		</table>
-	</p>
-    </div>
-  </div>
-</td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Суббота</h5>
-      <p class="card-text">
-      	<table border="1" name="sub">
-		<tr>
-		<td>№</td> <td width=300px>Пара</td> <td>Время</td>
-		</tr>
-		<td>1</td> <td><a id="sat0" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>2</td> <td><a id="sat1" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>3</td> <td><a id="sat2" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>4</td> <td><a id="sat3" href="#openModal"></a></td> <td></td>
-		</tr>
-		<td>5</td> <td><a id="sat4" href="#openModal"></a></td> <td></td>
-		</tr>
-		</table>
-	</p>
-    </div>
-  </div>
-</div>
-</td>
-</tr>
-</table>
-<div id="tasks">
-  <div class="task">
-    <span class="taskName">задача</span>
-    <span class="taskDeadline">deadline</span>
-    <span class="taskImg"><img src=""></span>
-  </div>
-</div>
-<div id="openModal" class="modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title">Информация</h3>
-            <a href="#close" title="Close" class="close">×</a>
-          </div>
-          <div class="modal-body">
+      <div class="table2" name="vt">
+        <div class="day">Вторник</div>
+        <div class="table-info">
+          <div class="row row1">
+                <div class="cell cell1">№</div>
+                <div class="cell cell2">Пара</div>
+                <div class="cell cell3">Время</div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">1</div>
+                <div class="cell cell2"><a class="click" id="tue0" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">2</div>
+                <div class="cell cell2"><a class="click" id="tue1" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">3</div>
+                <div class="cell cell2"><a class="click" id="tue2" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">4</div>
+                <div class="cell cell2"><a class="click" id="tue3" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">5</div>
+                <div class="cell cell2"><a class="click" id="tue4" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+        </div>
+      </div>
+    <div class="table3" name="sr">
+        <div class="day">Среда</div>
+        <div class="table-info">
+          <div class="row row1">
+                <div class="cell cell1">№</div>
+                <div class="cell cell2">Пара</div>
+                <div class="cell cell3">Время</div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">1</div>
+                <div class="cell cell2"><a class="click" id="wed0" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">2</div>
+                <div class="cell cell2"><a class="click" id="wed1" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">3</div>
+                <div class="cell cell2"><a class="click" id="wed2" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">4</div>
+                <div class="cell cell2"><a class="click" id="wed3" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">5</div>
+                <div class="cell cell2"><a class="click" id="wed4" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+        </div>
+      </div>
+      <div class="table4" name="ch">
+        <div class="day">Четверг</div>
+        <div class="table-info">
+          <div class="row row1">
+                <div class="cell cell1">№</div>
+                <div class="cell cell2">Пара</div>
+                <div class="cell cell3">Время</div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">1</div>
+                <div class="cell cell2"><a class="click" id="thu0" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">2</div>
+                <div class="cell cell2"><a class="click" id="thu1" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">3</div>
+                <div class="cell cell2"><a class="click" id="thu2" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3" ></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">4</div>
+                <div class="cell cell2"><a class="click" id="thu3" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">5</div>
+                <div class="cell cell2"><a class="click" id="thu4" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+        </div>
+      </div>
+      <div class="table5" name="pt">
+        <div class="day">Пятница</div>
+        <div class="table-info">
+          <div class="row row1">
+                <div class="cell cell1">№</div>
+                <div class="cell cell2">Пара</div>
+                <div class="cell cell3">Время</div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">1</div>
+                <div class="cell cell2"><a class="click" id="fri0" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">2</div>
+                <div class="cell cell2"><a class="click" id="fri1" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">3</div>
+                <div class="cell cell2"><a class="click" id="fri2" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">4</div>
+                <div class="cell cell2"><a class="click" id="fri3" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+              <div class="row">
+                <div class="cell cell1">5</div>
+                <div class="cell cell2"><a class="click" id="fri4" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+        </div>
+      </div>
+      <div class="table6" name="sub">
+        <div class="day">Суббота</div>
+        <div class="table-info">
+          <div class="row row1">
+                <div class="cell cell1">№</div>
+                <div class="cell cell2">Пара</div>
+                <div class="cell cell3">Время</div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">1</div>
+                <div class="cell cell2"><a class="click" id="sat0" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">2</div>
+                <div class="cell cell2"><a class="click" id="sat1" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+          <div class="row">
+                <div class="cell cell1">3</div>
+                <div class="cell cell2"><a class="click" id="sat2" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+            </div>
+              <div class="row">
+                <div class="cell cell1">4</div>
+                <div class="cell cell2"><a class="click" id="sat3" href="#openModal" rel="modal:open"></a></div>
+                <div class="cell cell3"></div>
+              </div>
+           <div class="row">
+                <div class="cell cell1">5</div>
+                <div class="cell cell2"><a class="click" id="sat4" href="#openModal" rel="modal:open"></a></div>
+            <div class="cell cell3"></div>
           </div>
         </div>
       </div>
-    </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var scrollbar = document.body.clientWidth - window.innerWidth + 'px';
-      console.log(scrollbar);
-      var allOpen = document.querySelectorAll('[href="#openModal"]');
-      var allClose = document.querySelectorAll('[href="#close"]');
-      for(let elem of allOpen){
-        elem.addEventListener('click', function () {
-          document.getElementById("modalName").value = elem.innerHTML;
-          document.body.style.overflow = 'hidden';
-          document.querySelector('#openModal').style.marginLeft = scrollbar;
-          //document.getElementById("autorf").click();
 
-          var tmp = PHP;
-        });
-      }
-      for (let elem of allClose){
-        elem.addEventListener('click', function () {
-          //document.getElementById('save').setAttribute ("name", "close");
-          document.body.style.overflow = 'visible';
-          document.querySelector('#openModal').style.marginLeft = '0px';
-        });
-    }
-    });
-  </script>
+
+  
 <?php
 //header("location: /red.php/");
-
+/*
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
-
+*/
 include("func.php");
 include("push.php");
   $dbuser = "postgres";
@@ -349,7 +345,7 @@ getSubjs();
 
   if (isset($_POST["saveInfo"])){
     
-      $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', '".$sched."', '".$_FILES['filename']."')";
+      $query = "insert into task values ('".$_POST['task']."', '".$_POST['modalName']."', '".$_POST['description']."', '".$_POST['deadlineDate']."', '".$_POST['deadlineTime']."' , '".$_POST['img']."', '".$sched."')";
       echo "alert('".$query."');";
     $result = pg_query($db, $query);
     
@@ -374,6 +370,17 @@ getSubjs();
 
   }
   ?>
+<script type="text/javascript">
+  var buttons = document.getElementsByClassName('click');
 
+  for(i=0; i<buttons.length; i++){
+    buttons[i].addEventListener('click', (document.getElementById('modalName').innerHTML=buttons[i].innerHTML));
+  }
+
+  function addToInput(nameOfSub){
+    alert ("igor tebe ne nuzna viska");
+    document.getElementById('modalName').innerHTML=nameOfSub;
+  }
+</script>
 </body> 
 </html>
