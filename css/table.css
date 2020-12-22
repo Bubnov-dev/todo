@@ -7,6 +7,7 @@ html, body{
     font-family:'Arial', sans-serif;
     font-size:10px;
     color:white;
+    background: white;
 }
 
 .layout-positioner {
@@ -63,10 +64,6 @@ img {
 	margin-left: 30px;
 }
 
-.page1
-{
-	text-decoration: underline;
-}
 
 .text {
 	text-align: center; 
@@ -76,11 +73,14 @@ img {
 hr{
 	margin: -30px auto 10px;
 	padding: 0;
-	height: 50px;
 	border: none;
 	border-bottom: 1px solid #34495e;
 	box-shadow: 0 20px 20px -20px #333;
 	width: 80%;
+}
+
+.hrr {
+	height: 50px;
 	margin-bottom: 60px;
 }
 
@@ -169,8 +169,88 @@ hr{
 }
 
 .modal {
-	display: table;	
 	background: #fff;
 	border: 2px solid #6699cc;
 	border-radius: 4px;
+
+}
+
+.modal-body { 
+	margin-top: 10px;
+	vertical-align: top;
+}
+
+.field {
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.modal-header {
+	width: 100%;
+	text-align: center;
+}
+
+.modal-hr {
+	margin-top: 20px;
+}
+
+label {
+	font-size: 15pt;
+	color: #34495e;
+}
+
+h2 {
+	color: #34495e;
+}
+input[type="text"] {
+    height: 10px;
+    font-size: 11pt;
+    border: 1px solid #6699cc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+}
+input[type="date"] {
+    height: 10px;
+    font-size: 11pt;
+    border: 1px solid #6699cc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+}
+input[type="time"] {
+    height: 10px;
+    font-size: 11pt;
+    border: 1px solid #6699cc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+}
+input[type="textarea"] {
+    height: 10px;
+    font-size: 11pt;
+    border: 1px solid #6699cc;
+    padding: 5px 10px;
+    color: black;
+}
+
+input.modalName{
+    border: 0px solid #6699cc;
+
+}
+
+input[type="submit"]{
+	background-color: #6699cc;
+	color: white;
+	padding: 5px;
+	font-size:12pt ;
+	border: 1px solid #6699cc;
+	border-radius: 3px;
+	margin-right: 20px;
+}
+
+input[type="submit"]:hover{
+	background-color: white;
+	color: #6699cc;
+	border: 1px solid #6699cc;
 }

@@ -3,40 +3,70 @@
     header("Location: start.php");
   }
 ?>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <title>Задания</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!DOCTYPE HTML>
+<html>
+ <head>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="keywords" content="Расписание, задания, домашняя работа, планировщик, распорядок">
+  <meta name="keywords" content="Расписание, домашняя работа, планировщик, распорядок">
   <meta name="description" content="PLANIRATOR 9000 - это сервис, напрвленный на повышение успеваемости студентов и школьников. Сайт поможет наладить распорядок дня каждого пользователя, что способствует повышению вашей работоспособности.">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+  <style type="text/css">
+    li{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      width: 100%;
+      height: 80px;
+    }
+    .task-name{
+      grid-row: 1/2;
+      grid-column: 1/2;
+    }
+    .desc{
+      grid-row: 1/2;
+
+      grid-column: 2/3;
+    }
+    .deadline{
+      grid-row: 1/2;
+      grid-column: 3/4;
+    }
+    .subj{
+      grid-row: 1/2;
+      grid-column: 4/5;
+    }
+    .time{
+      grid-row: 1/2;
+      grid-column: 5/6;
+    }
+    .img{
+      width: 100%
+      grid-row: 1/2;
+      grid-column: 6/7;
+    }
+    img.img{
+      height: 100%;
+    }
+  </style>
+  <script src="main.js"></script>
+  
+  <title>Просмотр</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" rel="stylesheet">
 </head>
+<header>
+<div class = "H_Name"><b>PLANIRATOR 9000<b></div>
+<p class = "H_menu">
+<a href="show.php" class="link">Расписание</a>
+<a href = "main.html" class="link">Задания</a>
+<a href = "#" class="link">Профиль</a>
+</ul>
+</header>
 <body>
-    <div class="hader">
-        <div class="layout-positioner">
-            <div class=layout-hader>
-              <div><img src="img/logo-2.png"></div>
-              <div class="PLANIRATOR hader-content"><a>PLANIRATOR</a></div>
-              <div class="menu hader-content">
-                <p>
-                  <a href="show.php" class="page">Расписание</a>
-                  <a href = "red.php" class="page">Предметы</a>
-                  <a href = "logout.php" class="page">Выход</a>
-                 </p>  
-              </div>    
-        </div>
-      </div>
-    </div>
-    <div>
 <div id="myDIV" class="header">
-  <h1>Задачи</h1>
-  <hr align="content" class="hrr">
+  <h2>Задачи</h2>
   <input type="text" id="myInput" placeholder="Title...">
   <span onclick="newElement()" class="addBtn">Добавить</span>
 </div>
@@ -75,4 +105,3 @@ for($j=0; $j<count($resScheds); $j++):
   <?php endfor;?>
     </ul>
 </body>
-</html>
