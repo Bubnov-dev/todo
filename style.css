@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Roboto, sans-serif;
+}
+.dws-wrapper {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+.dws-form {
+	background: #90EE90; 
+	padding: 10px; 
+	width: 330px;
+}
+.dws-form a {
+	text-decoration: none;
+ 	transition: 0.5s;
+	color: #298cad;
+}
+.dws-form a:hover {
+	color: #36d2ff;
+}
+.dws-form ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.dws-form input {
+	display: block;
+	width: 100%;
+}
+.tab-form{
+	background: #fff;
+	display: none;
+}
+.tab-form.active {
+	display: block;
+}
+label.tab {
+	outline: 1px solid orange;
+	color: #ffffff;
+	font-weight: 600;
+	padding: 15px;
+	display: inline-block;
+	border-radius: 3px 3px 0 0;
+	margin-bottom: -1px;
+	cursor: pointer;
+}
+label.tab.active {
+ background: #fff;
+ color: #1b5f75;
+}
+.del {
+	display: none;
+}
