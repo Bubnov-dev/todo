@@ -1,281 +1,362 @@
-<?php session_start();?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
- <head>
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<?php session_start();
+  if ($_SESSION['auth']!=1) {
+    header("Location: start.php");
+  }
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Предметы</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="keywords" content="Расписание, домашняя работа, планировщик, распорядок">
+  <meta name="keywords" content="Расписание,предметы, домашняя работа, планировщик, распорядок">
   <meta name="description" content="PLANIRATOR 9000 - это сервис, напрвленный на повышение успеваемости студентов и школьников. Сайт поможет наладить распорядок дня каждого пользователя, что способствует повышению вашей работоспособности.">
-  <title>Создание</title>
-  <link rel="stylesheet" type="text/css" href="table.css">
-  <style>
-    html{
-      background: linear-gradient(45deg, #EECFBA, #C5DDE8);
-      height: 100%;
-    }
-    .dayName{
-      display: inline-block;
-      width: 45%;
-    }
-    #mainForm{
-      margin-left: 1%;
-      float: left;
-    }
-
-
-
-    input[type="submit"] {
-      display: inline-block;
-      width: 6em;
-      height: 2em;
-      line-height: 2em;
-      vertical-align: middle;
-      text-align: center;
-      text-decoration: none;
-      user-select: none;
-      color: rgb(0,0,0);
-      outline: none;
-      border: 1px solid rgba(0,0,0,.4);
-      border-top-color: rgba(0,0,0,.3);
-      border-radius: 2px;
-      background: linear-gradient(45deg, #c58b77, #a29995);
-      box-shadow:
-       0 0 3px rgba(0,0,0,0) inset,
-       0 1px 1px 1px rgba(255,255,255,.2),
-       0 -1px 1px 1px rgba(0,0,0,0);
-      transition: .2s ease-in-out;
-    }
-    input[type="submit"]hover:not(:active) {
-
-      box-shadow:
-       0 0 3px rgba(0,0,0,0) inset,
-       0 1px 1px 1px rgba(0,255,255,.5),
-       0 -1px 1px 1px rgba(0,255,255,.5);
-    }
-    input[type="submit"]:active {
-      background: linear-gradient(#856, #635);
-      box-shadow:
-       0 0 3px rgba(0,0,0,.5) inset,
-       0 1px 1px 1px rgba(255,255,255,.4),
-       0 -1px 1px 1px rgba(0,0,0,.1);
-    }
-  </style>
-
+  <link rel="stylesheet" type="text/css" href="css/red.css">
 </head>
-<header>
-<div class = "H_Name"><b>PLANIRATOR 9000<b></div>
-<p class = "H_menu">
-<a href="show.php" class="link">Расписание</a>
-<a href = "red.php" class="link">Задания</a>
-<a href = "#" class="link">Профиль</a>
-</ul>
-</header>
 <body>
- 
- 	<form id="mainForm" name="add" method="POST" action="">
- 		<h2>Добавить предмет</h2><br>
- 		<p>Название:</p><br>
- 		<input type="text" name="subj" size="40"><br>
-    
- 		<span class="dayName">Дни недели:</span> 
-    <span>номера пар</span>
-  			<p><span class="dayName">Понедельник  </span>
-        <input type="checkbox" name="monTime[]" value="0">
-        <input type="checkbox" name="monTime[]" value="1">
-        <input type="checkbox" name="monTime[]" value="2">
-        <input type="checkbox" name="monTime[]" value="3">
-        <input type="checkbox" name="monTime[]" value="4">
+    <div class="hader">
+        <div class="layout-positioner">
+            <div class=layout-hader>
+              <div><img src="img/logo-2.png"></div>
+              <div class="PLANIRATOR hader-content"><a>PLANIRATOR</a></div>
+              <div class="menu hader-content">
+                <p>
+                  <a href="show.php" class="page">Расписание</a>
+                  <a href = "main.php" class="page">Задания</a>
+                  <a href = "logout.php" class="page">Выход</a>
+                 </p>  
+              </div>    
+        </div>
+      </div>
+    </div>
+    <div class="text"><h1>Мои предметы</h1></div>
+    <hr align="content" class="hrr">
+  <div class="Add">
+    <form id="mainForm" name="add" method="POST" action="">
+      <h2>Добавить предмет</h2><br>
+      <div class="lesson" ><label for="id_lesson">Предмет:</label><input type="text" name="subj" size="30" id="id_lesson" placeholder="Название предмета"></div><br>
+      <div class="AddLesson">
+      <div class="AddRow">
+      <div class="dayName DN AddCell">День недели:</div> 
+      <div class="lessonNumber AddCell">Номер пары</div>
+      </div>
+        <div class="AddRow">
+          <div class="dayName AddCell">Понедельник  </div>
+          <div class="AddCell">
+            <input type="checkbox" class="custom-checkbox" id="M0" name="monTime[]" value="0">
+            <label for="M0"></label>
+            <input type="checkbox" class="custom-checkbox" id="M1" name="monTime[]" value="1">
+            <label for="M1"></label>
+            <input type="checkbox" class="custom-checkbox" id="M2" name="monTime[]" value="2">
+            <label for="M2"></label>
+            <input type="checkbox" class="custom-checkbox" id="M3" name="monTime[]" value="3">
+            <label for="M3"></label>
+            <input type="checkbox" class="custom-checkbox" id="M4" name="monTime[]" value="4">
+            <label for="M4"></label>
+          </div>
+        </div>
+        <div class="AddRow">
+          <div class="dayName AddCell">Вторник  </div>
+            <div class="AddCell">
+              <input type="checkbox" class="custom-checkbox" id="T0" name="tueTime[]" value="0">
+              <label for="T0"></label>
+              <input type="checkbox" class="custom-checkbox" id="T1" name="tueTime[]" value="1">
+              <label for="T1"></label>
+              <input type="checkbox" class="custom-checkbox" id="T2" name="tueTime[]" value="2">
+              <label for="T2"></label>
+              <input type="checkbox" class="custom-checkbox" id="T3" name="tueTime[]" value="3">
+              <label for="T3"></label>
+              <input type="checkbox" class="custom-checkbox" id="T4" name="tueTime[]" value="4">
+              <label for="T4"></label>
+            </div>
+          </div>
+          <div class="AddRow ">
+          <div class="dayName AddCell">Среда  </div>
+            <div class="AddCell">
+              <input type="checkbox" class="custom-checkbox" id="W0" name="wedTime[]" value="0">
+              <label for="W0"></label>
+              <input type="checkbox" class="custom-checkbox" id="W1" name="wedTime[]" value="1">
+              <label for="W1"></label>
+              <input type="checkbox" class="custom-checkbox" id="W2" name="wedTime[]" value="2">
+              <label for="W2"></label>
+              <input type="checkbox" class="custom-checkbox" id="W3" name="wedTime[]" value="3">
+              <label for="W3"></label>
+              <input type="checkbox" class="custom-checkbox" id="W4" name="wedTime[]" value="4">
+              <label for="W4"></label>
+            </div>
+          </div>
+          <div class="AddRow">
+          <div class="dayName AddCell">Четверг</div>
+            <div class="AddCell">
+              <input type="checkbox" class="custom-checkbox" id="Th0" name="thuTime[]" value="0">
+              <label for="Th0"></label>
+              <input type="checkbox" class="custom-checkbox" id="Th1" name="thuTime[]" value="1">
+              <label for="Th1"></label>
+              <input type="checkbox" class="custom-checkbox" id="Th2" name="thuTime[]" value="2">
+              <label for="Th2"></label>
+              <input type="checkbox" class="custom-checkbox" id="Th3" name="thuTime[]" value="3">
+              <label for="Th3"></label>
+              <input type="checkbox" class="custom-checkbox" id="Th4" name="thuTime[]" value="4">
+              <label for="Th4"></label>
+            </div>
+          </div>
+          <div class="AddRow">
+          <div class="dayName AddCell">Пятница  </div>
+            <div class="AddCell">
+              <input type="checkbox" class="custom-checkbox" id="F0" name="friTime[]" value="0">
+              <label for="F0"></label>
+              <input type="checkbox" class="custom-checkbox" id="F1" name="friTime[]" value="1">
+              <label for="F1"></label>
+              <input type="checkbox" class="custom-checkbox" id="F2" name="friTime[]" value="2">
+              <label for="F2"></label>
+              <input type="checkbox" class="custom-checkbox" id="F3" name="friTime[]" value="3">
+              <label for="F3"></label>
+              <input type="checkbox" class="custom-checkbox" id="F4" name="friTime[]" value="4">
+              <label for="F4"></label>
+            </div>
+          </div>
+          <div class="AddRow">
+          <div class="dayName AddCell">Суббота</div>
+            <div class="AddCell">
+              <input type="checkbox" class="custom-checkbox" id="S0" name="satTime[]" value="0">
+              <label for="S0"></label>
+              <input type="checkbox" class="custom-checkbox" id="S1" name="satTime[]" value="1">
+              <label for="S1"></label>
+              <input type="checkbox" class="custom-checkbox" id="S2" name="satTime[]" value="2">
+              <label for="S2"></label>
+              <input type="checkbox" class="custom-checkbox" id="S3" name="satTime[]" value="3">
+              <label for="S3"></label>
+              <input type="checkbox" class="custom-checkbox" id="S4" name="satTime[]" value="4">
+              <label for="S4"></label>
+            </div>
+          </div>
+        </div>
+          <div class="batton">
+          <input type="submit" name="save" value="Добавить">
+          <input type="submit" name="del"  value="Удалить">
+        </div>
+    </form>
+  </div>
+  <div class="tables">
+    <div class="table1" name="pn">
+      <div class="day">Понедельник</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="mon0"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="mon1"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="mon2"></a></div>
+              <div class="cell cell3" ></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="mon3"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="mon4"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+      </div>
+    </div>
+    <div class="table2" name="vt">
+      <div class="day">Вторник</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="tue0"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="tue1"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="tue2"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="tue3"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="tue4"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+      </div>
+    </div>
+  <div class="table3" name="sr">
+      <div class="day">Среда</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="wed0"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="wed1"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="wed2"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="wed3"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="wed4"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+      </div>
+    </div>
+    <div class="table4" name="ch">
+      <div class="day">Четверг</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="thu0"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="thu1"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="thu2"></a></div>
+              <div class="cell cell3" ></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="thu3"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="thu4"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+      </div>
+    </div>
+    <div class="table5" name="pt">
+      <div class="day">Пятница</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="fri0"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="fri1"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="fri2"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="fri3"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+            <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="fri4"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+      </div>
+    </div>
+    <div class="table6" name="sub">
+      <div class="day">Суббота</div>
+      <div class="table-info">
+        <div class="row row1">
+              <div class="cell cell1">№</div>
+              <div class="cell cell2">Пара</div>
+              <div class="cell cell3">Время</div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">1</div>
+              <div class="cell cell2"><a class="click" id="sat0"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">2</div>
+              <div class="cell cell2"><a class="click" id="sat1"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+        <div class="row">
+              <div class="cell cell1">3</div>
+              <div class="cell cell2"><a class="click" id="sat2"></a></div>
+              <div class="cell cell3"></div>
+          </div>
+            <div class="row">
+              <div class="cell cell1">4</div>
+              <div class="cell cell2"><a class="click" id="sat3"></a></div>
+              <div class="cell cell3"></div>
+            </div>
+         <div class="row">
+              <div class="cell cell1">5</div>
+              <div class="cell cell2"><a class="click" id="sat4"></a></div>
+          <div class="cell cell3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <Br>
-  			<span class="dayName">Вторник  </span>
-        <input type="checkbox" name="tueTime[]" value="0">
-        <input type="checkbox" name="tueTime[]" value="1">
-        <input type="checkbox" name="tueTime[]" value="2">
-        <input type="checkbox" name="tueTime[]" value="3">
-        <input type="checkbox" name="tueTime[]" value="4">
-        <Br>
-  			<span class="dayName">Среда  </span>
-        <input type="checkbox" name="wedTime[]" value="0">
-        <input type="checkbox" name="wedTime[]" value="1">
-        <input type="checkbox" name="wedTime[]" value="2">
-        <input type="checkbox" name="wedTime[]" value="3">
-        <input type="checkbox" name="wedTime[]" value="4">
-        <Br>
-  			<span class="dayName">Четверг  </span>
-        <input type="checkbox" name="thuTime[]" value="0">
-        <input type="checkbox" name="thuTime[]" value="1">
-        <input type="checkbox" name="thuTime[]" value="2">
-        <input type="checkbox" name="thuTime[]" value="3">
-        <input type="checkbox" name="thuTime[]" value="4">
-        <Br>
-  			<span class="dayName">Пятница  </span>
-        <input type="checkbox" name="friTime[]" value="0"
->        <input type="checkbox" name="friTime[]" value="1">
-        <input type="checkbox" name="friTime[]" value="2">
-        <input type="checkbox" name="friTime[]" value="3">
-        <input type="checkbox" name="friTime[]" value="4">
-        <Br>
-  			<span class="dayName">Суббота  </span>
-        <input type="checkbox" name="satTime[]" value="0">
-        <input type="checkbox" name="satTime[]" value="1">
-        <input type="checkbox" name="satTime[]" value="2">
-        <input type="checkbox" name="satTime[]" value="3">
-        <input type="checkbox" name="satTime[]" value="4">
-        <Br></p>
-  			<p><input type="submit" name="save" value="Добавить/обновить"></p>
-  			<p><input type="submit" name="del"  value="Удалить"></p>
-  	</form>
- <h1 align="CENTER">Расписание</h1>
- <p align="CENTER">
-<table border="0" cellspacing="30" align="CENTER"><tr><td>
-<div class="card-deck">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Понедельник</h5>
-      <p class="card-text">
-        <table border="1" name="pn">
-    <tr>
-    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
-    </tr>
-    <td>1</td > <td id="mon0"></td> <td></td>
-    </tr>
-    <td>2</td> <td id="mon1"></td> <td></td>
-    </tr>
-    <td>3</td> <td id="mon2"></td> <td></td>
-    </tr>
-    <td>4</td> <td id="mon3"></td> <td></td>
-    </tr>
-    <td>5</td> <td id="mon4"></td> <td></td>
-    </tr>
-    </table>
-  </p>
-    </div>
-  </div>
- </td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Вторник</h5>
-      <p class="card-text">
-        <table border="1" name="vt">
-    <tr>
-    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
-    </tr>
-    <td>1</td> <td id="tue0"></td> <td></td>
-    </tr>
-    <td>2</td> <td id="tue1"></td> <td></td>
-    </tr>
-    <td>3</td> <td id="tue2"></td> <td></td>
-    </tr>
-    <td>4</td> <td id="tue3"></td> <td></td>
-    </tr>
-    <td>5</td> <td id="tue4"></td> <td></td>
-    </tr>
-    </table>
-  </p>
-    </div>
-  </div>
-</td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Среда</h5>
-      <p class="card-text">
-        <table border="1" name="sr">
-    <tr>
-    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
-    </tr>
-    <td>1</td> <td id="wed0"></td> <td></td>
-    </tr>
-    <td>2</td> <td id="wed1"></td> <td></td>
-    </tr>
-    <td>3</td> <td id="wed2"></td> <td></td>
-    </tr>
-    <td>4</td> <td id="wed3"></td> <td></td>
-    </tr>
-    <td>5</td> <td id="wed4"></td> <td></td>
-    </tr>
-    </table>
-  </p>
-    </div>
-  </div>
-</div>
-</td>
-</tr>
-<tr>
-  <td>
-<div class="card-deck">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Четверг</h5>
-      <p class="card-text">
-        <table border="1" name="ch">
-    <tr>
-    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
-    </tr>
-    <td>1</td> <td id="thu0"></td> <td></td>
-    </tr>
-    <td>2</td> <td id="thu1"></td> <td></td>
-    </tr>
-    <td>3</td> <td id="thu2"></td> <td></td>
-    </tr>
-    <td>4</td> <td id="thu3"></td> <td></td>
-    </tr>
-    <td>5</td> <td id="thu4"></td> <td></td>
-    </table>
-  </p>
-    </div>
-  </div>
- </td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Пятница</h5>
-      <p class="card-text">
-        <table border="1" name="pt">
-    <tr>
-    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
-    </tr>
-    <td>1</td> <td id="fri0"></td> <td></td>
-    </tr>
-    <td>2</td> <td id="fri1"></td> <td></td>
-    </tr>
-    <td>3</td> <td id="fri2"></td> <td></td>
-    </tr>
-    <td>4</td> <td id="fri3"></td> <td></td>
-    </tr>
-    <td>5</td> <td id="fri4"></td> <td></td>
-    </tr>
-    </table>
-  </p>
-    </div>
-  </div>
-</td><td>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Суббота</h5>
-      <p class="card-text">
-        <table border="1" name="sub">
-    <tr>
-    <td>№</td> <td width=300px>Пара</td> <td>Время</td>
-    </tr>
-    <td>1</td> <td id="sat0"></td> <td></td>
-    </tr>
-    <td>2</td> <td id="sat1"></td> <td></td>
-    </tr>
-    <td>3</td> <td id="sat2"></td> <td></td>
-    </tr>
-    <td>4</td> <td id="sat3"></td> <td></td>
-    </tr>
-    <td>5</td> <td id="sat4"></td> <td></td>
-    </tr>
-    </table>
-  </p>
-    </div>
-  </div>
-</div>
-</td>
-</tr>
-</table>
 <?php
+
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 include("func.php");
 include("push.php");
 ini_set('error_reporting', E_ALL);
@@ -284,15 +365,7 @@ ini_set('display_startup_errors', 0);
 
 
 
-$dbuser = "postgres";
-
-$dbpass = "2001";
-
-$host = "localhost";
-
-$dbname = "postgres";
-
-$db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
+require("connect.php");
 
 $sched = $_SESSION['sched'];
 

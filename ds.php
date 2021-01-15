@@ -211,15 +211,7 @@ function findTime($day, $array){
 	return $timeArr;
 }
 
-$dbuser = "postgres";
-
-$dbpass = "2001";
-
-$host = "localhost";
-
-$dbname = "postgres";
-
-$db = pg_connect("host = $host dbname = $dbname user = $dbuser password = $dbpass port = 5432");
+require("connect.php");
 
 $sched = "itmo";
 

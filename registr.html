@@ -1,12 +1,3 @@
-<?php 
-
-session_start();
-
-  if ($_SESSION['auth']==1) {
-    header("Location: show.php");
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -34,8 +25,8 @@ session_start();
          </div>
       <div class="f-wrap">
            <div class="field">
-                <input class="password" type="password" name="  password" id="new-password" placeholder="">
-               <label for="new-password">Пароль</label>
+                <input class="password" type="password" name="new-password" id="new-password" placeholder="">
+               <label for="new-password">Старый пароль</label>
             </div>
           </div>
       <input type="submit" class="button" name="in" value="Войти">
@@ -52,11 +43,11 @@ session_start();
 
       <div class="f-wrap">
            <div class="field">
-                <input class="password" type="password" name="password" id="new-password" placeholder="">
-               <label for="new-password">Пароль</label>
+                <input class="password" type="password" name="new-password" id="new-password" placeholder="">
+               <label for="new-password">Старый пароль</label>
             </div>
           </div>
-      
+      <label for="OK">Согласие на обработку персональных данных</label><input type="checkbox" class="custom-checkbox" id="OK">
       <input type="submit" class="button" name="up" value="Зарегестрироваться">
    </form>
   <!-- <script type="text/javascript" src="js/show-password.js"></script>!-->
@@ -66,59 +57,3 @@ session_start();
 </div>
 </body>
 </html>
-
-
-<?php
-
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 0);
-ini_set('display_startup_errors', 0);
-
-
-require("connect.php");
-
-
-
-if(isset($_POST['up'])){
-  
-  
-  
-  
-  
-  $name = $_POST["name"];
-  $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-  
-
-  $query = "INSERT INTO userok values ('$name', '$password')";
-
-  $result = pg_query($db,$query);
-
-
-  unset($_POST['up']);
-
-}
-
-if(isset($_POST['in'])){
-  
-
-
-    $query = "select password from userok where login = '".$_POST['name']."'";
-
-  $login = $_POST['name'];
-  $password = $_POST["password"];
-
-  $result = pg_query($db,$query);
-  $pass = pg_fetch_row($result);
-
-
-  if (password_verify($password, $pass[0]))
-    $_SESSION['auth'] = 1;
-    $_SESSION['login'] = $login;
-    header ('Location: show.php');
-    
-  unset($_POST['in']);
-
-}
-pg_close($db);
-
-?>
