@@ -1,0 +1,273 @@
+html, body{
+    margin:0;
+    padding:0;
+}
+
+.body{
+    font-family:'Arial', sans-serif;
+    font-size:10px;
+    color:white;
+    background: white;
+}
+
+.layout-positioner {
+}
+
+.layout-positioner:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.hader {
+    background-color:#6699cc;
+    width: 95%;
+    min-height: 125px;
+    margin-left: 87px;
+    margin-bottom: 100px;
+    box-shadow: 0 20px 20px -20px #333;
+}
+img {
+	float:left;
+	margin-top: 0px;
+	margin-left: 0px;
+	height: 125px;
+	width: 175px;
+	position: absolute;
+	left: 8px;
+}
+
+.hader-content {
+	width: 100%;
+	display: inline-block;
+}
+
+.PLANIRATOR {
+	text-align: center;
+	padding-top: 35px;
+	font-size: 30pt;
+	color: white;
+	width: 40%;
+	padding-left: 20% ;
+	font-weight: bold;
+}
+
+.menu {
+	float: right;
+	width: 30%;
+	padding: 30px;
+}
+
+.page{
+	color: white;
+	text-decoration: none;
+	font-size:  18pt;
+	margin-left: 30px;
+}
+
+.page1
+{
+	text-decoration: underline;
+}
+
+.text {
+	text-align: center; 
+	color: #34495e;
+}
+
+hr{
+	margin: -30px auto 10px;
+	padding: 0;
+	border: none;
+	border-bottom: 1px solid #34495e;
+	box-shadow: 0 20px 20px -20px #333;
+	width: 80%;
+}
+
+.hrr {
+	height: 50px;
+	margin-bottom: 60px;
+}
+
+.table-info {
+	display: table;
+    background: #D9EDF7;
+    border-color: #3A87AD;
+    padding: 0px;
+    border-spacing: 5px;
+
+
+}
+
+.row, .AddRow{
+	display:table-row;
+}
+
+.cell, .AddCell{
+	display:table-cell;
+}
+
+.tables {
+	display: inline-block;
+	color: #34495e;
+} 
+
+
+.table1, .table2, .table3, .table4, .table5, .table6 {
+	display: table;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 40px;
+}
+
+.table1, .table4 {
+	margin-left:185px;
+}
+
+.day {
+	font-size: 14pt;
+	text-align: center;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+.table-info {
+
+	border: 2px solid #6699cc;
+	border-radius: 5px;
+	border-spacing: 0px;
+	width: 500px;
+}
+
+.cell { 
+	border: 1px solid white;
+	padding: 7px;
+ }
+
+ .cell1 {
+ 	border-right: 3px solid orange;
+ 	text-align: center;
+ 	width: 20px;
+ }
+
+ .cell3 {
+ 	width: 40px;
+ }
+
+
+.row1 .cell {
+	border-bottom: 3px solid orange;
+	text-align: center;
+}
+
+.click {
+	text-decoration: none;
+	color: #34495e;
+}
+
+.Add {
+
+	width: 100%;
+	margin-bottom: 50px;
+}
+.AddLesson {
+	display: table;
+	margin-right: auto;
+	margin-left: auto;
+	border-spacing: 10px;
+}
+
+.AddCell {
+	width: 167px;
+	padding-right: 20px;
+}
+
+.dayName
+{
+	font-size: 14pt;
+	color: #34495e;
+	font-weight: bold;	
+}
+
+.lessonNumber, .DN {
+	font-size: 14pt;
+	text-align: center;
+	color: #34495e;
+	font-weight: bold;
+}
+
+.AddCell {
+	border-bottom: 1px solid #6699cc;
+	padding-right: 5px;
+}
+
+.custom-checkbox{
+	margin-right: 5px;
+	margin-left: 5px;
+	width: 1.5em;
+  	height: 1.5em;
+}
+
+h2 {
+	text-align: center;
+	color: #34495e;
+
+}
+
+.lesson {
+	color: #34495e;
+	font-size: 15pt;
+	display: block;
+	width: 30%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 130px;
+	font-weight: bold;
+}
+
+input[type="text"] {
+	font-size: 15pt;
+	border-bottom: 2px solid #6699cc;
+	border-left: 0px solid;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	color: #34495e;
+}
+
+input[type="text"]:focus {
+	outline: none;
+	font-size: 15pt;
+	border-bottom: 2px solid #6699cc;
+	border-left: 0px solid;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	color: #34495e;
+}
+
+::-webkit-input-placeholder {color:#6699cc; padding-left: 20px;}
+::-moz-placeholder          {color:#6699cc; padding-left: 20px;}
+:-moz-placeholder           {color:#6699cc; padding-left: 20px;}
+:-ms-input-placeholder      {color:#6699cc; padding-left: 20px;}
+
+input[type="submit"] {
+	background-color: #6699cc;
+	color: white;
+	font-size: 13pt;
+	padding: 5px;
+	border: 2px solid #6699cc;
+	border-radius: 4px;
+	margin-right: 15px;
+}
+
+input[type="submit"]:hover {
+	background-color: white;
+	color: #6699cc;
+	font-size: 13pt;
+	padding: 5px;
+	border: 2px solid #6699cc;
+	border-radius: 4px; 
+}
+
+.batton {
+	margin-top: 25px;
+	padding-left: 44.5%;
+}
